@@ -11,7 +11,7 @@ class EpisodeDAO extends DAO
 
     public function obtenirEpisodes()
     {
-        $requeteSql = 'SELECT * FROM episodes_publies ORDER BY date_publication DESC';
+        $requeteSql = 'SELECT * FROM episodes_publies WHERE corbeille = "non" ORDER BY date_publication DESC';
         $episodes = $this->obtenirObjet($requeteSql, 'EpisodeElement');
         return $episodes;
     }
@@ -23,7 +23,7 @@ class EpisodeDAO extends DAO
 
     public function obtenirUnEpisodeParId($idEpisode)
     {
-        $requeteSql = 'SELECT * FROM episodes_publies WHERE ID ='.$idEpisode;
+        $requeteSql = 'SELECT * FROM episodes_publies WHERE ID ='.$idEpisode.' AND corbeille = "non"';
         $episodes = $this->obtenirObjet($requeteSql, 'EpisodeElement');
         $episode = $episodes[$idEpisode];
         return $episode;

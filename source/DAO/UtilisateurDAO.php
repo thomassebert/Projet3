@@ -17,7 +17,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
 
 	public function obtenirUnUtilisateurParId($idUtilisateur)
     {
-        $requeteSql = 'SELECT * FROM utilisateurs WHERE ID ='.$idUtilisateur;
+        $requeteSql = 'SELECT * FROM utilisateurs WHERE ID ='.$idUtilisateur.' AND corbeille = "non"';
         $utilisateur = $this->obtenirObjet($requeteSql, 'UtilisateurElement');
         return $utilisateur;
     }
@@ -28,7 +28,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
     public function loadUserByUsername($username)
     {
     	$username = (string) $username;
-        $requeteSql = 'SELECT * FROM utilisateurs WHERE username = '.$username;
+        $requeteSql = 'SELECT * FROM utilisateurs WHERE username = '.$username.' AND corbeille = "non"';
         $utilisateurs = $this->obtenirObjet($requeteSql, 'UtilisateurElement');
         foreach ($utilisateurs as $key => $value) {
         	$utilisateur = $value;

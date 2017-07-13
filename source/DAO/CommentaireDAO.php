@@ -12,7 +12,7 @@ class CommentaireDAO extends DAO
 
 	public function obtenirCommentaires() 
 	{
-		$requeteSql = 'SELECT * FROM commentaires WHERE signalement = "non" ORDER BY date_publication_commentaire';
+		$requeteSql = 'SELECT * FROM commentaires WHERE signalement = "non" AND corbeille = "non" ORDER BY date_publication_commentaire';
 		$commentaires = $this->obtenirObjet($requeteSql, 'CommentaireElement');
 		return $commentaires;
 	}
@@ -24,7 +24,7 @@ class CommentaireDAO extends DAO
 
 	public function obtenirCommentairesDunEpisode($idEpisode) 
 	{
-		$requeteSql = 'SELECT * FROM commentaires WHERE ID_episode = '.$idEpisode.' AND signalement = "non" ORDER BY date_publication_commentaire';
+		$requeteSql = 'SELECT * FROM commentaires WHERE ID_episode = '.$idEpisode.' AND signalement = "non" AND corbeille = "non" ORDER BY date_publication_commentaire';
 		$commentaires = $this->obtenirObjet($requeteSql, 'CommentaireElement');
 		return $commentaires;
 	}
@@ -36,7 +36,7 @@ class CommentaireDAO extends DAO
 
 	public function obtenirCommentaireParId($idCommentaire) 
 	{
-		$requeteSql = 'SELECT * FROM commentaires WHERE ID = '.$idCommentaire;
+		$requeteSql = 'SELECT * FROM commentaires WHERE ID = '.$idCommentaire.' AND corbeille = "non"';
 		$commentaire = $this->obtenirObjet($requeteSql, 'CommentaireElement');
 		return $commentaire;
 	}
@@ -47,7 +47,7 @@ class CommentaireDAO extends DAO
 
 	public function obtenirSignalements() 
 	{
-		$requeteSql = 'SELECT * FROM commentaires WHERE signalement = "oui" ORDER BY date_publication_commentaire';
+		$requeteSql = 'SELECT * FROM commentaires WHERE signalement = "oui" AND corbeille = "non" ORDER BY date_publication_commentaire';
 		$signalements = $this->obtenirObjet($requeteSql, 'CommentaireElement');
 
 		$reponse = array();
