@@ -1,0 +1,264 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    font-family: 'Raleway', sans-serif;
+  }
+
+main {
+    flex: 1 0 auto;
+  }
+
+h3 
+{
+	font-size: 30px !important;
+}
+
+#acceuil
+{
+	min-height: 100px;
+	background-color: #5b677a;
+}
+
+header
+{
+	background-color: #5b677a !important;
+}
+
+footer
+{
+	background-color: #5b677a !important; 
+}
+
+
+
+#contenuAcceuil
+{
+	margin-top: 30px;
+}
+
+
+#modal1
+{
+	min-height: 350px;
+}
+
+@media screen and (max-width: 600px)
+{
+	#modal1
+	{
+		min-height: 400px;
+	}
+}
+
+#modal2
+{
+	height: 150px;
+	width: 500px;
+}
+
+.confirmation
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+
+}
+
+.parallax-container 
+{
+      height: 700px;
+}
+
+article
+{
+	margin-top: 20px;
+}
+
+th
+{
+	text-align: center;
+}
+
+.tableau
+{
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: column;
+}
+
+.ligne
+{
+	min-height: 70px;
+	border-bottom: 1px solid silver;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.ligne:hover
+{
+	background-color: rgba(192, 192, 192, 0.2);
+}
+
+.colonne
+{
+	text-align: center;
+	flex-grow: 0;
+	flex-shrink: 0;
+	flex-basis: 23%;
+}
+
+.colonne2
+{
+	text-align: center;
+	flex-grow: 0;
+	flex-shrink: 0;
+	flex-basis: 18%;
+}
+
+.colonne3
+{
+	text-align: center;
+	flex-grow: 0;
+	flex-shrink: 0;
+	flex-basis: 30%;
+}
+
+.pleineLargeur
+{
+	flex-grow: 0;
+	flex-shrink: 0;
+	flex-basis: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.alignement
+{
+	margin-left: 5px;
+	margin-top: -2px;
+}
+
+#listeEpisodes
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+
+}
+
+.card
+{
+	max-width: 400px;
+
+}
+
+
+
+
+svg{
+  background: #5b677a;
+  background-size: .6em 100%;
+  font-family:  'Dancing Script', cursive;
+}
+
+.text--line {
+  font-size: 4em;
+}
+
+.text--line2 {
+  font-size: 1.5em;
+}
+
+
+
+.text-copy {
+  fill: none;
+  stroke: white;
+  stroke-dasharray: 800;
+  -webkit-stroke-width: 0.5px;
+  -moz-stroke-width: 0.5px;
+  		  stroke-width: 0.5px;
+  -webkit-animation: stroke-offset 6s linear;
+  -moz-animation: stroke-offset 6s linear;
+          animation: stroke-offset 6s linear;
+}
+.text-copy:nth-child(1) {
+  stroke: white;
+  stroke-dashoffset: 0%;
+}
+
+
+@-webkit-keyframes stroke-offset {
+  0% {
+    stroke-dashoffset: 10%;
+    stroke-dasharray: 0 80%;
+  }
+}
+
+@-moz-keyframes stroke-offset {
+  0% {
+    stroke-dashoffset: 10%;
+    stroke-dasharray: 0 80%;
+  }
+}
+
+@keyframes stroke-offset {
+  0% {
+    stroke-dashoffset: 10%;
+    stroke-dasharray: 0 80%;
+  }
+}
+
+.titreEpisode
+{
+	font-family:  'Dancing Script', cursive !important;
+}
+
+#titreAnimation
+{
+	height: 200px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+#titreAnimation h1
+{
+	flex-grow: 0;
+	flex-shrink: 0;
+	flex-basis: 100%;
+}
+
+.csd
+{
+	min-height: 70px;
+	border-bottom: 1px solid silver;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.petit
+{
+	font-size: 15px;
+}
+
+.auteurCommentaire
+{
+	font-size: 20px;
+}
+
+
