@@ -91,27 +91,27 @@ abstract class DAO
 
     			$reponse = $this->_bdd->query("SELECT ID_commentaire_reponse FROM commentaires WHERE ID = ".$idObjet);
     			$idCommentaire = $reponse->fetch();
-    			$suppressionCommentaire = $this->_bdd->exec("DELETE FROM commentaires WHERE ID = ".$idCommentaire['ID_commentaire_reponse']);
-    			$suppressionSignalement = $this->_bdd->exec("DELETE FROM commentaires WHERE ID = ".$idObjet);
+    			$suppressionCommentaire = $this->_bdd->exec("UPDATE commentaires SET corbeille = 'oui' WHERE ID = ".$idCommentaire['ID_commentaire_reponse']);
+    			$suppressionSignalement = $this->_bdd->exec("UPDATE commentaires SET corbeille = 'oui' WHERE ID = ".$idObjet);
 
     			break;
 
     		case 'SignalementSeul' :
 
-    			$suppressionSignalement = $this->_bdd->exec("DELETE FROM commentaires WHERE ID = ".$idObjet);
+    			$suppressionSignalement = $this->_bdd->exec("UPDATE commentaires SET corbeille = 'oui' WHERE ID = ".$idObjet);
 
     			break;
 
     		case 'Episode' :
 
-    			$suppressionEpisodes = $this->_bdd->exec("DELETE FROM episodes_publies WHERE ID = ".$idObjet);
-    			$suppressionCommentaires = $this->_bdd->exec("DELETE FROM commentaires WHERE ID_episode = ".$idObjet);
+    			$suppressionEpisodes = $this->_bdd->exec("UPDATE episodes_publies SET corbeille = 'oui' WHERE ID = ".$idObjet);
+    			$suppressionCommentaires = $this->_bdd->exec("UPDATE commentaires SET corbeille = 'oui' WHERE ID_episode = ".$idObjet);
    
     			break;
 
     		case 'Utilisateur' :
 
-    			$suppressionUtilisateur = $this->_bdd->exec("DELETE FROM utilisateurs WHERE ID = ".$idObjet);
+    			$suppressionUtilisateur = $this->_bdd->exec("UPDATE utilisateurs SET corbeille = 'oui' WHERE ID = ".$idObjet);
     			
     			break;
     	}
