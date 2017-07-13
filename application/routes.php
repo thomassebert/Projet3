@@ -33,7 +33,7 @@ $app->match('/episode/{id}', function ($id, Request $request) use ($app)
 {
     // Récupère l'épisode demandé
 
-		$episodes = $app['dao.episode']->obtenirUnEpisodeParId($id);
+		$episode = $app['dao.episode']->obtenirUnEpisodeParId($id);
 	
 	// Si cet épisode n'est pas encore publié (brouillon)
 	// exit = (url) Redirection vers la page d'acceuil
