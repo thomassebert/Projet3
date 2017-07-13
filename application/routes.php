@@ -180,8 +180,7 @@ $app->match('/administration/editer/{id}', function ($id, Request $request) use 
 	// Choix mise à jour d'un épisode ou création d'un nouveau
 
 		if (! $id == 0) {
-			$episodes = $app['dao.episode']->obtenirUnEpisodeParId($id);
-			$episode = $episodes[$id];
+			$episode = $app['dao.episode']->obtenirUnEpisodeParId($id);
 	   		$episode->setImage(new File('assets/images/'.$episode->image()));
 		}
 
