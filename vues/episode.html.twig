@@ -1,0 +1,201 @@
+{% extends "layout.html.twig" %}
+
+{% block titre %} 
+
+    {{ episode.titre |title }} 
+
+<!-- TITRE DE LA PAGE -->
+{% endblock %} 
+
+{% block css %}
+
+    
+<!-- CSS -->
+{% endblock %} 
+
+{% block contenu %}
+
+    <header id="accueil">
+        <a class="btn waves-effect waves-teal" href="http://alaska.thomassebert.fr/">Retour à l'acceuil</a>
+    </header>
+
+    <main class="container">
+ 
+        <!-- CONTENU DE L'EPISODE -->
+        <div class="center-align" id="titreAnimation">
+            <h1 class="titreEpisode">{{ episode.titre |title }}</h1>
+            <p>{{ episode.date_publication }}</p>
+        </div>
+
+        <article class="row csd">
+            <p><img src="/assets/images/{{ episode.image }}" width="66%" class="col s8 offset-s2"></p>
+            <p class="flow-text col s12">{{ episode.contenu | raw }}</p>
+        </article>
+
+        <!-- AJOUT DE COMMENTAIRE -->
+        <article class="row">
+
+            <a class="waves-effect waves-light btn modalbutton" idcommentaire="NULL" niveaucommentaire="1" signalement="non" href="#modal1">Ajouter un commentaire</a> <br>
+            {% if commentaires %}
+                {{ nbCommentaire }} commentaires
+            {% endif %}
+
+            <!-- FORMULAIRE D'AJOUT DE COMMENTAIRE OU DE SIGNALEMENT -->
+            <div id="modal1" class="modal bottom-sheet">
+
+                <!-- TITRE DU FORMULAIRE ('COMMENTEZ' OU 'SIGNALEZ') -->
+                <div id="commentaireOuSignalement" class="col s12 center-align"> 
+                    Commentez
+                </div>
+
+                <!-- CHAMPS DU FORMULAIRE -->
+                <div class="modal-content">
+
+                    {% if formulaireCommentaire %}
+                        {{ form_start(formulaireCommentaire) }}
+                        
+                        <!-- CHAMP AUTEUR -->
+                        <div class="input-field col s12 m6">
+                            {{ form_errors(formulaireCommentaire.auteur_commentaire) }}
+                            {{ form_widget(formulaireCommentaire.auteur_commentaire, { 'attr':  {
+                                'class' : 'validate'
+                             }}) }}
+                             <label for="formulaire_commentaire[auteur_commentaire]">Votre pseudo</label>
+                        </div>
+
+                        <!-- CHAMP EMAIL -->
+                        <div class="input-field col s12 m6">
+                            {{ form_errors(formulaireCommentaire.email) }}
+                            {{ form_widget(formulaireCommentaire.email, { 'attr':  {
+                                'class' : 'validate'
+                            }}) }}
+                            <label for="formulaire_commentaire[email]">Votre adresse mail</label>
+                        </div>
+
+                        <!-- CHAMP CONTENU -->
+                        <div class="input-field col s12">
+                            {{ form_errors(formulaireCommentaire.contenu_commentaire) }}
+                            {{ form_widget(formulaireCommentaire.contenu_commentaire, { 'attr':  {
+                                'rows': '8',
+                                'class' : 'validate materialize-textarea'
+                            }}) }}
+                            <label for="formulaire_commentaire[contenu_commentaire]">Votre commentaire</label>
+                        </div>
+
+                        <!-- CHAMP HIDDEN RECUPERE L'ID DU COMMENTAIRE AUQUEL ON REPOND -->
+                        <div class="input-field">
+                            {{ form_errors(formulaireCommentaire.id_commentaire_reponse) }}
+                            {{ form_widget(formulaireCommentaire.id_commentaire_reponse, { 'attr':  {
+                                'value': ''
+                            }}) }}
+                        </div>
+
+                        <!-- CHAMP HIDDEN DEFINIT LE NIVEAU D'IMBRICATION DE LA REPONSE -->
+                        <div class="input-field">
+                            {{ form_errors(formulaireCommentaire.niveau_commentaire) }}
+                            {{ form_widget(formulaireCommentaire.niveau_commentaire, { 'attr':  {
+                                'value': ''
+                            }}) }}
+                        </div>
+
+                        <!-- CHAMP HIDDEN DEFINIT SI LE MESSAGE EST UN COMMENTAIRE OU UN SIGNALEMENT -->
+                        <div class="input-field">
+                            {{ form_errors(formulaireCommentaire.signalement) }}
+                            {{ form_widget(formulaireCommentaire.signalement, { 'attr':  {
+                                'value': ''
+                            }}) }}
+                        </div>
+
+                        <br/>
+                </div> <!-- FIN DES CHAMPS -->
+                        
+                <!-- BOUTON D'ENVOI -->
+                <div class="modal-footer"> 
+                    <button class="btn waves-effect waves-teal" type="submit" name="action">Envoyer<i class="material-icons right">send</i></button>   
+                </div>
+
+                {{ form_end(formulaireCommentaire) }}
+
+            </div> <!-- FIN DU FORMULAIRE -->
+                
+            {% if alerte %}
+            <div class="alert alert-success">
+                Votre commentaire à bien été publié!
+            </div>
+            {% endif %}
+
+            {% endif %}
+        </article>
+
+        <!-- AFFICHAGE DES TROIS NIVEAUX DE COMMENTAIRES -->
+        <div class="row">
+            {% for commentaire_niveau1 in commentaires|reverse %}
+                {% if commentaire_niveau1.niveau_commentaire == 1 %}
+
+                    <article class="col s12">
+                        <div class="divider"></div>
+                        <span class="auteurCommentaire">{{ commentaire_niveau1.auteur_commentaire }}</span> <span class="right"> Le {{ commentaire_niveau1.date_publication_commentaire }} </span> 
+                        <p class="">{{ commentaire_niveau1.contenu_commentaire }}</p>
+                        <a class="waves-effect waves-light btn-flat modalbutton" idcommentaire="{{ commentaire_niveau1.id }}" niveaucommentaire="2" signalement="non" href="#modal1">Répondre</a>
+                        <a class="waves-effect waves-light btn-flat modalbutton" idcommentaire="{{ commentaire_niveau1.id }}" niveaucommentaire="0"  signalement="oui" href="#modal1">Signaler</a>
+                    </article>
+
+                    {% if commentaire_niveau1.reponse == 'oui' %}
+                        {% for commentaire_niveau2 in commentaires %}
+                            {% if commentaire_niveau2.niveau_commentaire == 2 and commentaire_niveau2.id_commentaire_reponse == commentaire_niveau1.id %}
+
+                                <article class="col s10 offset-s2">
+                                    <div class="divider"></div>
+                                    <span class="auteurCommentaire">{{ commentaire_niveau2.auteur_commentaire }}</span> <span class="right"> Le {{ commentaire_niveau2.date_publication_commentaire }} </span> 
+                                    <p class="">{{ commentaire_niveau2.contenu_commentaire }}</p> 
+                                    <a class="waves-effect waves-light btn-flat modalbutton" idcommentaire="{{ commentaire_niveau2.id }}" niveaucommentaire="3"  signalement="non" href="#modal1">Répondre</a>
+                                    <a class="waves-effect waves-light btn-flat modalbutton" idcommentaire="{{ commentaire_niveau2.id }}" niveaucommentaire="0"  signalement="oui" href="#modal1">Signaler</a>
+                                </article>
+
+                                {% if commentaire_niveau2.reponse == 'oui' %}
+                                    {% for commentaire_niveau3 in commentaires %}
+                                        {% if commentaire_niveau3.niveau_commentaire == 3 and commentaire_niveau3.id_commentaire_reponse == commentaire_niveau2.id %}
+                                            
+                                            <article class="col s8 offset-s4">
+                                                <div class="divider"></div>
+                                                <span class="auteurCommentaire">{{ commentaire_niveau3.auteur_commentaire }}</span> <span class="right"> Le {{ commentaire_niveau3.date_publication_commentaire }} </span> 
+                                                <p class="">{{ commentaire_niveau3.contenu_commentaire }}</p>
+                                                <a class="waves-effect waves-light btn-flat modalbutton" idcommentaire="{{ commentaire_niveau3.id }}" niveaucommentaire="0"  signalement="oui" href="#modal1">Signaler</a>
+                                            </article>
+
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+
+                {% endif %}
+
+                {% else %}
+                Aucun commentaire
+
+            {% endfor %}
+        </div> <!-- FIN DES COMMENTAIRES -->
+
+    </main>
+
+<!-- CONTENU -->
+{% endblock %} 
+
+{% block footer %}
+
+    <a class="waves-effect waves-teal btn-flat" href="http://alaska.thomassebert.fr/administration">Administration</a> 
+
+<!-- FOOTER -->
+{% endblock %}
+
+{% block js %}
+
+<script type="text/javascript" src="{{ asset('/js/episode.js') }}"></script>
+
+<!-- JS -->
+{% endblock %} 
+
+        

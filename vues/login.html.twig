@@ -1,0 +1,64 @@
+{% extends 'layout.html.twig' %}
+
+{% block titre %}
+
+    Connexion
+
+<!-- TITRE DE LA PAGE -->
+{% endblock %} 
+
+{% block css %}
+
+    
+
+<!-- CSS -->
+{% endblock %} 
+
+{% block contenu %}
+
+    <h2 class="center-align">Connexion</h2>
+
+    {% if error %}
+        <div class="">
+            <strong>Erreur de connexion</strong> {{ error }}
+        </div>
+    {% endif %}
+
+    
+    <main>
+
+        <!-- FORMULAIRE DE CONNEXION -->
+       <form method="post" role="form" action="{{ path('login_check') }}">
+           <div class="input-field col s12 m6">
+               <input type="text" value="{{ last_username }}" name="_username" id="username"/>
+               <label for="username">Votre identifiant</label>
+           </div>
+           <div class="input-field col s12 m6">
+               <input type="password" name="_password" id="password"/>
+               <label for="password">Votre mot de passe</label>
+           </div>
+           <button class="btn waves-effect waves-teal" type="submit" name="action">Connexion</button>    
+       </form>
+
+       <a class="btn waves-effect waves-teal" href="http://alaska.thomassebert.fr/">Retour à l'acceuil</a>
+    </main>
+
+<!-- CONTENU -->
+{% endblock %} 
+
+{% block footer %}
+
+    
+
+<!-- FOOTER -->
+{% endblock %} 
+
+{% block js %}
+
+
+
+<!-- JS -->
+{% endblock %} 
+
+
+

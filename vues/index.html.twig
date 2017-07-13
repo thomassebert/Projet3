@@ -1,0 +1,77 @@
+{% extends "layout.html.twig" %}
+
+{% block titre %} 
+
+    Acceuil 
+
+<!-- TITRE DE LA PAGE -->
+{% endblock %} 
+
+{% block css %}
+
+
+    
+<!-- CSS -->
+{% endblock %} 
+
+{% block contenu %}
+        
+
+        <header id="acceuil" class="z-depth-4 row">
+            <svg viewBox="0 0 700 130">
+                <symbol id="s-text">
+                    <text text-anchor="middle" x="50%" y="50%" class="text--line"> Billet simple pour l'Alaska </text>
+                    <text text-anchor="middle" x="70%" y="80%" class="text--line2"> par Jean Forteroche </text> 
+                </symbol>
+              
+                <g class="g-ants">
+                    <use xlink:href="#s-text" class="text-copy"></use>     
+                </g>
+            </svg>
+        </header>
+
+        <main id="contenuAcceuil" class="container">
+
+        <!-- AFFICHE LA LISTE DES EPISODES PUBLIES DANS DES 'CARDS' -->
+            <div id="listeEpisodes">
+                {% for episode in episodes %}
+                {% if episode.etat == 'publié' %}
+                <article class="card hoverable">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="/assets/images/{{ episode.image }}">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title activator grey-text text-darken-4">
+                            <h3 class="activator center-align titreEpisode"> {{ episode.titre |title }} </h3>
+                            <p class="activator petit">Vu {{ episode.nombre_vues }} fois, publié le {{ episode.date_publication }} par {{ episode.auteur }} </p>
+                            <p><a class="waves-effect waves-teal btn-flat" href="http://alaska.thomassebert.fr/episode/{{ episode.id }}">Voir l'épisode</a></p>
+                        </div>
+                    </div>
+                    <div class="card-reveal flow-text">
+                        <span class="card-title grey-text text-darken-4 titreEpisode">{{ episode.titre |title }}<i class="material-icons right">close</i></span>
+                        <p class="flow-text">{{ episode.contenu | truncate(150, true, '...') | raw }}</p>
+                        <p><a class="waves-effect waves-teal btn-flat" href="http://alaska.thomassebert.fr/episode/{{ episode.id }}">Lire la suite</a></p>
+                    </div>
+                </article>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+        </main>
+        
+<!-- CONTENU -->
+{% endblock %} 
+
+{% block footer %}
+
+    <a class="waves-effect waves-teal btn-flat" href="http://alaska.thomassebert.fr/administration">Administration</a> 
+
+<!-- FOOTER -->
+{% endblock %} 
+
+{% block js %}
+
+    <script type="text/javascript" src="{{ asset('/js/accueil.js') }}"></script>
+
+ <!-- JS -->
+{% endblock %}

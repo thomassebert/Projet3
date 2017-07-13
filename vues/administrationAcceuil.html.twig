@@ -1,0 +1,160 @@
+{% extends "layout.html.twig" %}
+
+{% block titre %} 
+
+    Administration - Acceuil 
+
+<!-- TITRE DE LA PAGE -->
+{% endblock %} 
+
+{% block css %}
+
+    
+<!-- CSS -->
+{% endblock %} 
+
+{% block contenu %}
+        
+    <header id="acceuil" class="z-depth-4">
+        <h1 id="titrePrincipal" class="center-align">Administration</h1>
+    </header>
+
+    <main id="contenuAcceuil" class="container">
+
+    <!-- LISTE DES EPISODES -->
+
+       <article class="row">
+            <h3 class="center-align col m6 offset-m3"> Liste des épisodes <a href="http://alaska.thomassebert.fr/administration/editer/0" class="btn-floating waves-effect waves-light blue tooltipped" data-position="right" data-delay="50" data-tooltip="Ajouter un épisode"><i class="material-icons">add</i></a></h3>
+           <div class="tableau col s12">
+                <ul class="collapsible popout">
+                    <li class="ligne">
+                        <div class="colonne2"> <strong>Titre</strong> </div>
+                        <div class="colonne2"> <strong>Nombre de vues</strong> </div>
+                        <div class="colonne2"> <strong>Auteur</strong> </div>
+                        <div class="colonne2"> <strong>Etat</strong> </div>
+                        <div class="colonne2"> <strong>Action</strong> </div>
+                    </li>
+               {% for episode in episodes %}
+               <li>
+                 <div class="collapsible-header ligne">
+                   <div class="colonne2"> {{ episode.titre |title }} </div>
+                   <div class="colonne2"> {{ episode.nombre_vues }} </div>
+                   <div class="colonne2"> {{ episode.auteur }} </div>
+                   <div class="colonne2"> {{ episode.etat }} </div>
+                   <div class="colonne2"> 
+                        <a href="http://alaska.thomassebert.fr/administration/editer/{{episode.id}}" class="btn-floating waves-effect waves-light blue tooltipped" data-position="top" data-delay="50" data-tooltip="Modifier"><i class="material-icons alignement">mode_edit</i></a> 
+                        <a href="#modal2"  class="btn-floating waves-effect waves-light red tooltipped modal2" data-position="right" data-delay="50" data-tooltip="Supprimer"><i lien="http://alaska.thomassebert.fr/administration/supprimer/{{episode.id}}/Episode" class="material-icons alignement">delete</i></a> 
+                    </div>
+                </div>
+                <div class="collapsible-body" colspan="4">
+                    <div>  {{ episode.contenu | raw }} </div><br>
+                    <div class="divider"></div>
+                    {% for commentaire in commentaires %}
+                        {% if commentaire.id_episode == episode.id %}
+                        <div class="ligne">
+                            <div class="colonne3">{{ commentaire.auteur_commentaire }}</div>
+                            <div class="colonne3">{{ commentaire.contenu_commentaire }}</div>
+                            <div class="colonne3"> {{ commentaire.date_publication_commentaire }}</div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+               </li>
+               {% endfor %}
+            </table>
+       </article>
+
+       <!-- LISTE DES COMMENTAIRES SIGNALES -->
+
+       <article class="row">
+
+            {% if nbSignalements > 0 %}
+                <h3 class="center-align col m6 offset-m3"> Commentaires signalés   <a class="btn btn-floating pulse red white-text"> {{ nbSignalements }} </a> </h3>
+                <div class="tableau col s12">
+                <ul class="collapsible popout">
+                    <li class="ligne">
+                        <div class="colonne"> <strong>Message</strong> </div>
+                        <div class="colonne"> <strong>Auteur du message</strong> </div>
+                        <div class="colonne"> <strong>Date du message</strong> </div>
+                        <div class="colonne"> <strong>Action</strong> </div>
+                    </li>
+                    
+                        {% for signalement in signalements %}
+                            <li>
+                                <div class="collapsible-header ligne">
+                                    <div class="colonne"> {{ signalement.contenu_commentaire }} </div>
+                                    <div class="colonne"> {{ signalement.auteur_commentaire }} </div>
+                                    <div class="colonne"> {{ signalement.date_publication_commentaire }} </div>
+                                    <div class="colonne"> 
+                                        <a href="#modal3"  class="btn-floating waves-effect waves-light red tooltipped modal3" data-position="top" data-delay="50" data-tooltip="Supprimer"><i lien="http://alaska.thomassebert.fr/administration/supprimer/{{signalement.id}}/Signalement" class="material-icons alignement">delete</i></a> 
+                                        <a href="#modal4"  class="btn-floating waves-effect waves-light green tooltipped modal4" data-position="right" data-delay="50" data-tooltip="Approuver"><i lien="http://alaska.thomassebert.fr/administration/supprimer/{{signalement.id}}/SignalementSeul" class="material-icons alignement">done</i></a> 
+                                    </div>
+                                </div>
+                            {% for commentaire in commentaireSignale %}
+                                {% if commentaire.id == signalement.id_commentaire_reponse %}
+                                <div class="collapsible-body" colspan="4">
+                                    <div> Commentaire: {{ commentaire.contenu_commentaire }} </div>
+                                 </div>
+                                {% endif %}
+                            {% endfor %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+       </article>
+
+
+       <!-- MODALE CONFIRMATION SUPPRESSION EPISODE -->
+          <div id="modal2" class="modal">
+            <div class="modal-content">
+              <p>Etes vous sur de vouloir supprimer cet épisode? Les commentaires associés seront également supprimés. Cette action est irréversible!</p>
+              <div class="confirmation center-align">
+                  <a href="" id="suppressionEpisode" class="modal-action waves-effect btn waves-effect waves-light red">Oui, supprimer</a>
+                  <a href="#!" class="modal-action modal-close waves-effect btn waves-effect waves-light blue">Non, annuler</a>
+              </div>
+            </div>
+          </div>
+
+        <!-- MODALE CONFIRMATION SUPPRESSION COMMENTAIRE -->
+          <div id="modal3" class="modal">
+            <div class="modal-content">
+              <p>Etes vous sur de vouloir supprimer ce commentaire? Les réponses à ce commentaire seront également supprimées. </p>
+              <div class="confirmation center-align">
+                  <a href="" id="suppressionCommentaire" class="modal-action waves-effect btn waves-effect waves-light red">Oui, supprimer</a>
+                  <a href="#!" class="modal-action modal-close waves-effect btn waves-effect waves-light blue">Non, annuler</a>
+              </div>
+            </div>
+          </div>
+
+         <!-- MODALE SUPPRESSION SIGNALEMENT -->
+          <div id="modal4" class="modal">
+            <div class="modal-content">
+              <p>Annuler le signalement et conserver ce commentaire? </p>
+              <div class="confirmation center-align">
+                  <a href="" id="suppressionSignalement" class="modal-action waves-effect btn waves-effect waves-light green">Oui, conserver</a>
+                  <a href="#!" class="modal-action modal-close waves-effect btn waves-effect waves-light blue">Non, annuler</a>
+              </div>
+            </div>
+          </div>
+
+    </main>
+        
+<!-- CONTENU -->
+{% endblock %} 
+
+{% block footer %}
+
+<a class="waves-effect waves-teal btn-flat" href="http://alaska.thomassebert.fr/">Retour à l'acceuil</a> 
+
+<!-- FOOTER -->
+{% endblock %} 
+
+{% block js %}
+
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=f49rdahytfayja2s979p4a5wptlv3dinl2g73ai9hy4b4hi7"></script>
+
+<script type="text/javascript" src="{{ asset('/js/administration.js') }}"></script>
+
+<!-- JS -->
+{% endblock %} 

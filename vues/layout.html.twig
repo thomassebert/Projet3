@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<!-- HEAD -->
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- viewport mobile -->
+        <META name="viewport" content = "width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <!-- TITLE -->
+        <title> {% block titre %}{% endblock %} </title>
+    <!-- CSS -->
+        <link href="{{ asset('/lib/materialize/css/materialize.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/stylesheet.css') }}" rel="stylesheet">
+        {% block css %}{% endblock %}
+         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+         <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+         <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Raleway" rel="stylesheet">
+    </head>
+
+
+<!-- BODY -->
+
+    <body>
+
+
+        {% block contenu %}{% endblock %}
+        
+        <footer class="page-footer">
+
+        {% block footer %}{% endblock %}
+            
+        </footer>
+
+
+    <script type="text/javascript" src="{{ asset('/lib/jquery/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/lib/materialize/js/materialize.min.js') }}"></script>
+
+    {% block js %}{% endblock %}
+
+    </body>
+
+
+</html>

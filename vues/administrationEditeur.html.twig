@@ -1,0 +1,113 @@
+{% extends "layout.html.twig" %}
+
+{% block titre %} 
+
+    Administration - Editeur 
+
+<!-- TITRE DE LA PAGE -->
+{% endblock %}  
+
+{% block css %}
+
+    
+
+<!-- CSS -->
+{% endblock %} 
+
+
+{% block contenu %}
+        
+        <header id="acceuil" class="z-depth-4">
+            <h1 id="titrePrincipal" class="center-align">Editeur</h1>
+        </header>
+
+
+        <main id="contenuAcceuil" class="container">
+
+        {% if formulaireEditeur %}
+        {{ form_start(formulaireEditeur, { 'attr':  {
+                 'novalidate' : 'novalidate'
+             }}) }}
+            <div class="row">
+                <div class="input-field col s9">
+                   {{ form_errors(formulaireEditeur.titre) }}
+                    {{ form_widget(formulaireEditeur.titre, { 'attr':  {
+                        'class' : 'validate',
+                        'value' : episode.titre|title
+                    }}) }}
+                    <label for="formulaire_editeur[titre]">Titre de l'épisode</label>
+                </div>
+                <div class="input-field col s3">
+                    {{ form_errors(formulaireEditeur.auteur) }}
+                    {{ form_widget(formulaireEditeur.auteur, { 'attr':  {
+                         'class' : 'validate',
+                         'value' : app.user.username
+                     }}) }}
+                    <label for="formulaire_editeur[auteur]">Auteur</label>
+                </div>
+            </div> 
+            <div>
+            {{ form_errors(formulaireEditeur.contenu) }}
+            {{ form_widget(formulaireEditeur.contenu, { 'attr':  {
+                 'value' : episode.contenu
+             }}) }}
+             </div>
+             <div class="row">
+                <div class="file-field input-field col s9">
+                    <div class="btn">
+                        <span>Ajouter une image</span>
+                        {{ form_errors(formulaireEditeur.image) }}
+                        {{ form_widget(formulaireEditeur.image) }}
+                    </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                 </div>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="input-field col s4 offset-s2">
+                    {{ form_errors(formulaireEditeur.etat) }}
+                    {{ form_widget(formulaireEditeur.etat, { 'attr':  {
+                         'class' : 'validate',
+                         'value' : episode.etat
+                     }}) }}
+                    <label for="formulaire_editeur[etat]">Visibilité</label>
+                </div>
+                <div>ATTENTION: tous les champs doivent être remplis! </div>
+                <button class="col s4 offset-s2 btn waves-effect waves-teal" type="submit" name="action">Enregistrer</button> 
+            </div> 
+            
+        {{ form_end(formulaireEditeur) }}
+        {% endif %}
+
+        <div>  
+        {% if id != 0 %}
+         {% if episode.etat == 'publié' %}
+                Episode publié le {{ episode.date_publication}}
+                {% else %}
+                Brouillon créé le {{ episode.date_publication}}
+             {% endif %}
+        {% endif %}
+        </div>
+           
+
+        </main>
+ 
+<!-- CONTENU -->       
+{% endblock %} 
+
+{% block footer %}
+
+<a class="waves-effect waves-teal btn-flat" href="http://alaska.thomassebert.fr/">Retour à l'acceuil</a> 
+
+<!-- FOOTER -->
+{% endblock %} 
+
+{% block js %}
+
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=f49rdahytfayja2s979p4a5wptlv3dinl2g73ai9hy4b4hi7"></script>
+
+<script type="text/javascript" src="{{ asset('/js/administration.js') }}"></script>
+
+<!-- JS -->
+{% endblock %} 
