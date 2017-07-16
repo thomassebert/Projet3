@@ -17,15 +17,16 @@
 
     <header id="accueil">
         <a class="btn waves-effect waves-teal" href="http://alaska.thomassebert.fr/">Retour à l'acceuil</a>
+        <div class="center-align" id="titreAnimation">
+            <h1 class="titreEpisode">{{ episode.titre |title }}</h1>
+            <p>{{ episode.date_publication }}</p>
+        </div>
     </header>
 
     <main class="container">
  
         <!-- CONTENU DE L'EPISODE -->
-        <div class="center-align" id="titreAnimation">
-            <h1 class="titreEpisode">{{ episode.titre |title }}</h1>
-            <p>{{ episode.date_publication }}</p>
-        </div>
+        
 
         <article class="row csd">
             <p><img src="/assets/images/{{ episode.image }}" width="66%" class="col s8 offset-s2"></p>
@@ -134,8 +135,14 @@
 
                     <article class="col s12">
                         <div class="divider"></div>
-                        <span class="auteurCommentaire">{{ commentaire_niveau1.auteur_commentaire }}</span> <span class="right"> Le {{ commentaire_niveau1.date_publication_commentaire }} </span> 
-                        <p class="">{{ commentaire_niveau1.contenu_commentaire }}</p>
+                        <span class="auteurCommentaire">{{ commentaire_niveau1.auteur_commentaire }}</span> <span class="right"> Le {{ commentaire_niveau1.date_publication_commentaire }} </span>
+
+                        {% if commentaire_niveau1.corbeille == "non" %}
+                            <p class="">{{ commentaire_niveau1.contenu_commentaire }}</p>
+                        {% else %}
+                            <p class="">Ce commentaire à été modéré car il contenait des propos diffammatoires, injurieux ou illégaux - Jean Forteroche </p>
+                        {% endif %}
+
                         <a class="waves-effect waves-light btn-flat modalbutton" idcommentaire="{{ commentaire_niveau1.id }}" niveaucommentaire="2" signalement="non" href="#modal1">Répondre</a>
                         <a class="waves-effect waves-light btn-flat modalbutton" idcommentaire="{{ commentaire_niveau1.id }}" niveaucommentaire="0"  signalement="oui" href="#modal1">Signaler</a>
                     </article>
@@ -147,7 +154,13 @@
                                 <article class="col s10 offset-s2">
                                     <div class="divider"></div>
                                     <span class="auteurCommentaire">{{ commentaire_niveau2.auteur_commentaire }}</span> <span class="right"> Le {{ commentaire_niveau2.date_publication_commentaire }} </span> 
-                                    <p class="">{{ commentaire_niveau2.contenu_commentaire }}</p> 
+                                    
+                                    {% if commentaire_niveau2.corbeille == "non" %}
+                                        <p class="">{{ commentaire_niveau2.contenu_commentaire }}</p>
+                                    {% else %}
+                                        <p class="">Ce commentaire à été modéré car il contenait des propos diffammatoires, injurieux ou illégaux - Jean Forteroche </p>
+                                    {% endif %}
+
                                     <a class="waves-effect waves-light btn-flat modalbutton" idcommentaire="{{ commentaire_niveau2.id }}" niveaucommentaire="3"  signalement="non" href="#modal1">Répondre</a>
                                     <a class="waves-effect waves-light btn-flat modalbutton" idcommentaire="{{ commentaire_niveau2.id }}" niveaucommentaire="0"  signalement="oui" href="#modal1">Signaler</a>
                                 </article>
@@ -159,7 +172,13 @@
                                             <article class="col s8 offset-s4">
                                                 <div class="divider"></div>
                                                 <span class="auteurCommentaire">{{ commentaire_niveau3.auteur_commentaire }}</span> <span class="right"> Le {{ commentaire_niveau3.date_publication_commentaire }} </span> 
-                                                <p class="">{{ commentaire_niveau3.contenu_commentaire }}</p>
+                                                
+                                                {% if commentaire_niveau3.corbeille == "non" %}
+                                                    <p class="">{{ commentaire_niveau3.contenu_commentaire }}</p>
+                                                {% else %}
+                                                    <p class="">Ce commentaire à été modéré car il contenait des propos diffammatoires, injurieux ou illégaux - Jean Forteroche </p>
+                                                {% endif %}
+
                                                 <a class="waves-effect waves-light btn-flat modalbutton" idcommentaire="{{ commentaire_niveau3.id }}" niveaucommentaire="0"  signalement="oui" href="#modal1">Signaler</a>
                                             </article>
 
