@@ -41,6 +41,8 @@ class UtilisateurElement extends Element implements UserInterface
      */
     private $role;
 
+    private $_corbeille;
+
     public function getId() {
         return $this->id;
     }
@@ -48,6 +50,11 @@ class UtilisateurElement extends Element implements UserInterface
     public function setId($id) {
         $this->id = $id;
         return $this;
+    }
+
+    public function corbeille()
+    {
+        return $this->_corbeille;
     }
 
     /**

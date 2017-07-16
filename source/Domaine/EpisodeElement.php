@@ -14,6 +14,7 @@ class EpisodeElement extends Element
 	private $_etat;
 	private $_auteur;
 	private $_image;
+	private $_corbeille;
 
 	//GETTERS format attribut()
 
@@ -55,6 +56,11 @@ class EpisodeElement extends Element
 	public function image()
 	{
 		return $this->_image;
+	}
+
+	public function corbeille()
+	{
+		return $this->_corbeille;
 	}
 
 	//SETTERS format setAttribut($valeur) 

@@ -16,6 +16,7 @@ class CommentaireElement extends Element
 	private $_niveau_commentaire;
 	private $_id_commentaire_reponse;
 	private $_email;
+	private $_corbeille;
 
 
 	//METHODES MAGIQUES
@@ -96,6 +97,11 @@ class CommentaireElement extends Element
 	public function email()
 	{
 		return $this->_email;
+	}
+
+	public function corbeille()
+	{
+		return $this->_corbeille;
 	}
 
 
