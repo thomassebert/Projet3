@@ -259,7 +259,7 @@ $app->get('/administration/corbeille', function () use ($app)
     return $app['twig']->render('administrationCorbeille.html.twig', array(
     	'episodes' => $episodes,
     	'commentaires' => $commentaires,
-    	'signalements' => $signalement,
+    	'signalements' => $signalements,
     	));
 });
 

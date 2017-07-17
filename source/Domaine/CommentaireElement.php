@@ -186,5 +186,11 @@ class CommentaireElement extends Element
  		$this->_email = $email; 
  	}
 
+ 	public function setCorbeille($corbeille)
+ 	{
+ 		$corbeille = (string) $corbeille;
+ 		$this->_corbeille = $corbeille; 
+ 	}
+
 
 }

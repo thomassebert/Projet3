@@ -134,7 +134,7 @@ abstract class DAO
 
             case 'Commentaire' :
 
-                $restaurerCommentaire = $this->_bdd->exec("UPDATE commentaires SET corbeille = 'non' WHERE ID_episode = ".$idObjet);
+                $restaurerCommentaire = $this->_bdd->exec("UPDATE commentaires SET corbeille = 'non' WHERE ID = ".$idObjet);
                 
                 break;
         }

@@ -39,24 +39,14 @@
                    <div class="colonne2"> {{ episode.titre |title }} </div>
                    <div class="colonne2"> {{ episode.nombre_vues }} </div>
                    <div class="colonne2"> {{ episode.auteur }} </div>
-                   <div class="colonne2"> {{ episode.etat }} </div>
+                   <div class="colonne2"> {{ episode.etat |title }} </div>
                    <div class="colonne2"> 
                         <a href="http://alaska.thomassebert.fr/administration/editer/{{episode.id}}" class="btn-floating waves-effect waves-light blue tooltipped" data-position="top" data-delay="50" data-tooltip="Modifier"><i class="material-icons alignement">mode_edit</i></a> 
                         <a href="#modal2"  class="btn-floating waves-effect waves-light red tooltipped modal2" data-position="right" data-delay="50" data-tooltip="Supprimer"><i lien="http://alaska.thomassebert.fr/administration/supprimer/{{episode.id}}/Episode" class="material-icons alignement">delete</i></a> 
                     </div>
                 </div>
                 <div class="collapsible-body" colspan="4">
-                    <div>  {{ episode.contenu | raw }} </div><br>
-                    <div class="divider"></div>
-                    {% for commentaire in commentaires %}
-                        {% if commentaire.id_episode == episode.id %}
-                        <div class="ligne">
-                            <div class="colonne3">{{ commentaire.auteur_commentaire }}</div>
-                            <div class="colonne3">{{ commentaire.contenu_commentaire }}</div>
-                            <div class="colonne3"> {{ commentaire.date_publication_commentaire }}</div>
-                        </div>
-                        {% endif %}
-                    {% endfor %}
+                    <div>  {{ episode.contenu | raw }} </div>
                 </div>
                </li>
                {% endfor %}

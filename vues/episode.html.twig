@@ -137,10 +137,10 @@
                         <div class="divider"></div>
                         <span class="auteurCommentaire">{{ commentaire_niveau1.auteur_commentaire }}</span> <span class="right"> Le {{ commentaire_niveau1.date_publication_commentaire }} </span>
 
-                        {% if commentaire_niveau1.corbeille == "non" %}
-                            <p class="">{{ commentaire_niveau1.contenu_commentaire }}</p>
+                        {% if commentaire_niveau1.corbeille == 'oui' %}
+                            <p class="">Ce commentaire à été modéré car il contenait des propos diffammatoires, injurieux ou illégaux - Jean Forteroche </p> 
                         {% else %}
-                            <p class="">Ce commentaire à été modéré car il contenait des propos diffammatoires, injurieux ou illégaux - Jean Forteroche </p>
+                            <p class="">{{ commentaire_niveau1.contenu_commentaire }}</p>
                         {% endif %}
 
                         <a class="waves-effect waves-light btn-flat modalbutton" idcommentaire="{{ commentaire_niveau1.id }}" niveaucommentaire="2" signalement="non" href="#modal1">Répondre</a>
@@ -155,10 +155,10 @@
                                     <div class="divider"></div>
                                     <span class="auteurCommentaire">{{ commentaire_niveau2.auteur_commentaire }}</span> <span class="right"> Le {{ commentaire_niveau2.date_publication_commentaire }} </span> 
                                     
-                                    {% if commentaire_niveau2.corbeille == "non" %}
+                                    {% if commentaire_niveau2.corbeille == 'oui' %}
+                                        <p class="">Ce commentaire à été modéré car il contenait des propos diffammatoires, injurieux ou illégaux - Jean Forteroche </p> 
+                                     {% else %}
                                         <p class="">{{ commentaire_niveau2.contenu_commentaire }}</p>
-                                    {% else %}
-                                        <p class="">Ce commentaire à été modéré car il contenait des propos diffammatoires, injurieux ou illégaux - Jean Forteroche </p>
                                     {% endif %}
 
                                     <a class="waves-effect waves-light btn-flat modalbutton" idcommentaire="{{ commentaire_niveau2.id }}" niveaucommentaire="3"  signalement="non" href="#modal1">Répondre</a>
@@ -173,10 +173,10 @@
                                                 <div class="divider"></div>
                                                 <span class="auteurCommentaire">{{ commentaire_niveau3.auteur_commentaire }}</span> <span class="right"> Le {{ commentaire_niveau3.date_publication_commentaire }} </span> 
                                                 
-                                                {% if commentaire_niveau3.corbeille == "non" %}
-                                                    <p class="">{{ commentaire_niveau3.contenu_commentaire }}</p>
-                                                {% else %}
+                                                {% if commentaire_niveau3.corbeille == 'oui' %}
                                                     <p class="">Ce commentaire à été modéré car il contenait des propos diffammatoires, injurieux ou illégaux - Jean Forteroche </p>
+                                                {% else %}
+                                                    <p class="">{{ commentaire_niveau3.contenu_commentaire }}</p>
                                                 {% endif %}
 
                                                 <a class="waves-effect waves-light btn-flat modalbutton" idcommentaire="{{ commentaire_niveau3.id }}" niveaucommentaire="0"  signalement="oui" href="#modal1">Signaler</a>

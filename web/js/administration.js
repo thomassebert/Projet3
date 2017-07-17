@@ -79,3 +79,30 @@ for(var i=0; i<boutonsSupprimer.length; i++)
 		});
 }
  });
+
+
+$(document).ready(function(){
+var boutonsSupprimer = document.getElementsByClassName("modal5");
+var boutonConfirmationSuppression = document.getElementById("restaurationEpisode");
+for(var i=0; i<boutonsSupprimer.length; i++)
+{
+    boutonsSupprimer[i].addEventListener("click", function(e)
+    {
+      var lienSource = e.target.getAttribute("lien");
+      boutonConfirmationSuppression.setAttribute("href", lienSource);
+    });
+}
+ });
+
+$(document).ready(function(){
+var boutonsSupprimer = document.getElementsByClassName("modal6");
+var boutonConfirmationSuppression = document.getElementById("restaurationCommentaire");
+for(var i=0; i<boutonsSupprimer.length; i++)
+{
+    boutonsSupprimer[i].addEventListener("click", function(e)
+    {
+      var lienSource = e.target.getAttribute("lien");
+      boutonConfirmationSuppression.setAttribute("href", lienSource);
+    });
+}
+ });

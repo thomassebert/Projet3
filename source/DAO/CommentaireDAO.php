@@ -38,7 +38,7 @@ class CommentaireDAO extends DAO
 
 	public function obtenirCommentairesDunEpisode($idEpisode) 
 	{
-		$requeteSql = 'SELECT * FROM commentaires WHERE ID_episode = '.$idEpisode.' AND signalement = "non" AND corbeille = "non" ORDER BY date_publication_commentaire';
+		$requeteSql = 'SELECT * FROM commentaires WHERE ID_episode = '.$idEpisode.' AND signalement = "non" ORDER BY date_publication_commentaire';
 		$commentaires = $this->obtenirObjet($requeteSql, 'CommentaireElement');
 		return $commentaires;
 	}

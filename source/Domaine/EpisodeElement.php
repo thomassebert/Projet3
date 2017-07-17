@@ -123,4 +123,10 @@ class EpisodeElement extends Element
  		$this->_image = $image; 
  	}
 
+ 	public function setCorbeille($corbeille)
+ 	{
+ 		$corbeille = (string) $corbeille;
+ 		$this->_corbeille = $corbeille; 
+ 	}
+
 }

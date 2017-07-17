@@ -39,7 +39,7 @@
                    <div class="colonne2"> {{ episode.nombre_vues }} </div>
                    <div class="colonne2"> {{ episode.auteur }} </div>
                    <div class="colonne2"> 
-                        <a href="#modal2"  class="btn-floating waves-effect waves-light red tooltipped modal2" data-position="right" data-delay="50" data-tooltip="Restaurer"><i lien="http://alaska.thomassebert.fr/administration/restaurer/{{episode.id}}/Episode" class="material-icons alignement">delete</i></a> 
+                        <a href="#modal5"  class="btn-floating waves-effect waves-light red tooltipped modal2" data-position="right" data-delay="50" data-tooltip="Restaurer"><i lien="http://alaska.thomassebert.fr/administration/restaurer/{{episode.id}}/Episode" class="material-icons alignement">replay</i></a> 
                     </div>
                 </div>
                 <div class="collapsible-body" colspan="4">
@@ -48,6 +48,39 @@
                </li>
                {% endfor %}
        </article>
+
+      <!-- LISTE DES COMMENTAIRES SUPPRIMES -->
+
+       <article class="row">
+
+                <h3 class="center-align col m6 offset-m3"> Commentaires supprimés </h3>
+                <div class="tableau col s12">
+                <ul class="collapsible popout">
+                    <li class="ligne">
+                        <div class="colonne"> <strong>Commentaire</strong> </div>
+                        <div class="colonne"> <strong>Auteur</strong> </div>
+                        <div class="colonne"> <strong>Date</strong> </div>
+                        <div class="colonne"> <strong>Action</strong> </div>
+                    </li>
+                    
+                        {% for commentaire in commentaires %}
+                                <div class="collapsible-header ligne">
+                                    <div class="colonne"> {{ commentaire.contenu_commentaire | truncate(25, true, '...') }} </div>
+                                    <div class="colonne"> {{ commentaire.auteur_commentaire }} </div>
+                                    <div class="colonne"> {{ commentaire.date_publication_commentaire }} </div>
+                                    <div class="colonne"> 
+                                        <a href="#modal6"  class="btn-floating waves-effect waves-light red tooltipped modal3" data-position="top" data-delay="50" data-tooltip="Restaurer"><i lien="http://alaska.thomassebert.fr/administration/restaurer/{{commentaire.id}}/Commentaire" class="material-icons alignement">replay</i></a> 
+                                    </div>
+                                        <div class="collapsible-body" colspan="4">
+                                    <div>  {{ commentaire.contenu_commentaire }} </div>
+                                </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+       </article>
+       
 
        <!-- LISTE DES SIGNALEMENTS SUPPRIMES -->
 
@@ -78,57 +111,24 @@
                 </div>
        </article>
 
-      <!-- LISTE DES COMMENTAIRES SUPPRIMES -->
-
-       <article class="row">
-
-                <h3 class="center-align col m6 offset-m3"> Commentaires supprimés </h3>
-                <div class="tableau col s12">
-                <ul class="collapsible popout">
-                    <li class="ligne">
-                        <div class="colonne"> <strong>Commentaire</strong> </div>
-                        <div class="colonne"> <strong>Auteur</strong> </div>
-                        <div class="colonne"> <strong>Date</strong> </div>
-                        <div class="colonne"> <strong>Action</strong> </div>
-                    </li>
-                    
-                        {% for commentaire in commentaires %}
-                                <div class="collapsible-header ligne">
-                                    <div class="colonne"> {{ commentaire.contenu_commentaire | truncate(25, true, '...') }} </div>
-                                    <div class="colonne"> {{ commentaire.auteur_commentaire }} </div>
-                                    <div class="colonne"> {{ commentaire.date_publication_commentaire }} </div>
-                                    <div class="colonne"> 
-                                        <a href="#modal3"  class="btn-floating waves-effect waves-light red tooltipped modal3" data-position="top" data-delay="50" data-tooltip="Restaurer"><i lien="http://alaska.thomassebert.fr/administration/restaurer/{{commentaire.id}}/Commentaire" class="material-icons alignement">delete</i></a> 
-                                    </div>
-                                        <div class="collapsible-body" colspan="4">
-                                    <div>  {{ commentaire.contenu_commentaire }} </div>
-                                </div>
-                                </div>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-       </article>
-       
-
 
        <!-- MODALE CONFIRMATION RESTAURATION EPISODE -->
-          <div id="modal2" class="modal">
+          <div id="modal5" class="modal">
             <div class="modal-content">
               <p>Etes vous sur de vouloir restaurer cet épisode? Les commentaires associés seront également restaurés.</p>
               <div class="confirmation center-align">
-                  <a href="" id="suppressionEpisode" class="modal-action waves-effect btn waves-effect waves-light red">Oui, restaurer</a>
+                  <a href="" id="restaurationEpisode" class="modal-action waves-effect btn waves-effect waves-light red">Oui, restaurer</a>
                   <a href="#!" class="modal-action modal-close waves-effect btn waves-effect waves-light blue">Non, annuler</a>
               </div>
             </div>
           </div>
 
         <!-- MODALE CONFIRMATION RESTAURATION COMMENTAIRE -->
-          <div id="modal3" class="modal">
+          <div id="modal6" class="modal">
             <div class="modal-content">
               <p>Etes vous sur de vouloir restaurer ce commentaire? </p>
               <div class="confirmation center-align">
-                  <a href="" id="suppressionCommentaire" class="modal-action waves-effect btn waves-effect waves-light red">Oui, restaurer</a>
+                  <a href="" id="restaurationCommentaire" class="modal-action waves-effect btn waves-effect waves-light red">Oui, restaurer</a>
                   <a href="#!" class="modal-action modal-close waves-effect btn waves-effect waves-light blue">Non, annuler</a>
               </div>
             </div>

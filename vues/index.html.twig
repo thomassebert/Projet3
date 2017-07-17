@@ -55,7 +55,7 @@
                         <div class="card-alignement card-title activator grey-text text-darken-4">
                             <div>
                                 <h3 class="activator center-align titreEpisode"> {{ episode.titre |title }} </h3>
-                                <p class="activator petit">Vu {{ episode.nombre_vues }} fois, publié le {{ episode.date_publication }} par {{ episode.auteur }} </p>
+                                <p class="activator petit">{{ episode.nombre_vues }} vues, publié le {{ episode.date_publication }} par {{ episode.auteur }} </p>
                             </div>
                             <p><a class="waves-effect waves-teal btn-flat" href="http://alaska.thomassebert.fr/episode/{{ episode.id }}">Voir l'épisode</a></p>
                         </div>
