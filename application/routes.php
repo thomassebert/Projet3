@@ -172,7 +172,7 @@ $app->match('/administration/supprimer/{id}/{typeElement}', function($id, $typeE
 });
 
 
-// PAGE ADMINISTRATION EDITEUR
+// PAGE EDITEUR (ADMINISTRATION)
 // return = (vue) administrationAcceuil.html.twig
 
 $app->match('/administration/editer/{id}', function ($id, Request $request) use ($app) 
@@ -243,5 +243,24 @@ $app->match('/administration/editer/{id}', function ($id, Request $request) use 
 });
 
 
+// PAGE CORBEILLE (ADMINISTRATION)
+// return = (vue) administrationCorbeille.html.twig
+
+$app->get('/administration/corbeille', function () use ($app) 
+{
+	// Récupère tous les épisodes, commentaires et signalements qui ont été supprimés
+
+	    $episodes = $app['dao.episode']->episodesSupprimes();
+	    $signalements = $app['dao.commentaire']->signalementsSupprimes();
+	    $commentaires = $app['dao.commentaire']->commentairesSupprimes();
+
+	 // Retour
+
+    return $app['twig']->render('administrationCorbeille.html.twig', array(
+    	'episodes' => $episodes,
+    	'commentaires' => $commentaires,
+    	'signalements' => $signalement,
+    	));
+});
 
 

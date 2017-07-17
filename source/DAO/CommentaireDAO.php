@@ -17,6 +17,20 @@ class CommentaireDAO extends DAO
 		return $commentaires;
 	}
 
+	public function commentairesSupprimes() 
+	{
+		$requeteSql = 'SELECT * FROM commentaires WHERE signalement = "non" AND corbeille = "oui" ORDER BY date_publication_commentaire';
+		$commentaires = $this->obtenirObjet($requeteSql, 'CommentaireElement');
+		return $commentaires;
+	}
+
+	public function signalementsSupprimes() 
+	{
+		$requeteSql = 'SELECT * FROM commentaires WHERE signalement = "oui" AND corbeille = "oui" ORDER BY date_publication_commentaire';
+		$commentaires = $this->obtenirObjet($requeteSql, 'CommentaireElement');
+		return $commentaires;
+	}
+
 
 	//RECUPERER TOUS LES COMMENTAIRES LIES A UN EPISODE 
 	// parametre = (int) ID de l'épisode

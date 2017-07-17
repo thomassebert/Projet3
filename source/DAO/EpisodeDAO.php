@@ -16,6 +16,13 @@ class EpisodeDAO extends DAO
         return $episodes;
     }
 
+    public function episodesSupprimes()
+    {
+        $requeteSql = 'SELECT * FROM episodes_publies WHERE corbeille = "oui" ORDER BY date_publication DESC';
+        $episodes = $this->obtenirObjet($requeteSql, 'EpisodeElement');
+        return $episodes;
+    }
+
 
     //RECUPERER UN EPISODE PAR SON ID
     // parametre = (int) ID de l'épisode

@@ -21,7 +21,6 @@ class CommentaireElement extends Element
 
 	//METHODES MAGIQUES
 
-
 	public function __toString()
 	{
 		$id = $this->auteur_commentaire();

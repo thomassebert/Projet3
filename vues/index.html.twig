@@ -18,7 +18,7 @@
         
 
         <header id="acceuil" class="z-depth-4 row">
-            <svg viewBox="0 0 700 130">
+            <svg width="100vw" height="350px" viewBox="0 0 700 180" class="hide-on-small-only">
                 <symbol id="s-text">
                     <text text-anchor="middle" x="50%" y="50%" class="text--line"> Billet simple pour l'Alaska </text>
                     <text text-anchor="middle" x="70%" y="80%" class="text--line2"> par Jean Forteroche </text> 
@@ -26,6 +26,17 @@
               
                 <g class="g-ants">
                     <use xlink:href="#s-text" class="text-copy"></use>     
+                </g>
+            </svg>
+            <svg width="100vw" height="300px" viewBox="0 0 700 350" class="hide-on-med-and-up">
+                <symbol id="f-text">
+                    <text text-anchor="middle" x="50%" y="30%" class="text--line3"> Billet simple </text>
+                    <text text-anchor="middle" x="50%" y="55%" class="text--line3"> pour l'Alaska </text>
+                    <text text-anchor="middle" x="70%" y="85%" class="text--line4"> par Jean Forteroche </text> 
+                </symbol>
+              
+                <g class="g-ants">
+                    <use xlink:href="#f-text" class="text-copy"></use>     
                 </g>
             </svg>
         </header>
@@ -41,9 +52,11 @@
                         <img class="activator" src="/assets/images/{{ episode.image }}">
                     </div>
                     <div class="card-content">
-                        <div class="card-title activator grey-text text-darken-4">
-                            <h3 class="activator center-align titreEpisode"> {{ episode.titre |title }} </h3>
-                            <p class="activator petit">Vu {{ episode.nombre_vues }} fois, publié le {{ episode.date_publication }} par {{ episode.auteur }} </p>
+                        <div class="card-alignement card-title activator grey-text text-darken-4">
+                            <div>
+                                <h3 class="activator center-align titreEpisode"> {{ episode.titre |title }} </h3>
+                                <p class="activator petit">Vu {{ episode.nombre_vues }} fois, publié le {{ episode.date_publication }} par {{ episode.auteur }} </p>
+                            </div>
                             <p><a class="waves-effect waves-teal btn-flat" href="http://alaska.thomassebert.fr/episode/{{ episode.id }}">Voir l'épisode</a></p>
                         </div>
                     </div>

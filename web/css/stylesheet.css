@@ -24,14 +24,46 @@ h3
 header
 {
 	background-color: #5b677a !important;
+	min-width: 100vw;
 }
 
 footer
 {
 	background-color: #5b677a !important; 
 }
+.card
+{
+	display: flex !important;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+}
 
+.card-content
+{
+	flex: 1 0 auto;
+	display: flex !important;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+}
 
+.card-alignement
+{
+	flex: 1 0 auto;
+	display: flex !important;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.card-alignement p
+{
+	margin-top: auto;
+}
 
 #contenuAcceuil
 {
@@ -174,22 +206,30 @@ svg{
   font-size: 4em;
 }
 
+.text--line3 {
+  font-size: 7em;
+}
+
 .text--line2 {
   font-size: 1.5em;
+}
+
+.text--line4 {
+  font-size: 3em;
 }
 
 
 
 .text-copy {
-  fill: none;
+  fill: transparent;
   stroke: white;
   stroke-dasharray: 800;
   -webkit-stroke-width: 0.5px;
   -moz-stroke-width: 0.5px;
   		  stroke-width: 0.5px;
-  -webkit-animation: stroke-offset 6s linear;
-  -moz-animation: stroke-offset 6s linear;
-          animation: stroke-offset 6s linear;
+  -webkit-animation: stroke-offset 8s linear;
+  -moz-animation: stroke-offset 0s linear;
+          animation: stroke-offset 8s linear;
 }
 .text-copy:nth-child(1) {
   stroke: white;
@@ -206,8 +246,8 @@ svg{
 
 @-moz-keyframes stroke-offset {
   0% {
-    stroke-dashoffset: 10%;
-    stroke-dasharray: 0 80%;
+    stroke-dashoffset: 100%;
+    stroke-dasharray: 50 80%;
   }
 }
 

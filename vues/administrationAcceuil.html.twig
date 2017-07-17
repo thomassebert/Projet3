@@ -103,11 +103,19 @@
             {% endif %}
        </article>
 
+       <!-- ACCES A LA CORBEILLE -->
+
+       <article class="row">
+
+        <h3 class="center-align col m6 offset-m3"> Corbeille  <a href="http://alaska.thomassebert.fr/administration/corbeille"  class="btn-floating waves-effect waves-light red tooltipped modal4" data-position="right" data-delay="50" data-tooltip="Corbeille"><i class="material-icons ">delete</i></a> </h3>
+
+      </article>
+
 
        <!-- MODALE CONFIRMATION SUPPRESSION EPISODE -->
           <div id="modal2" class="modal">
             <div class="modal-content">
-              <p>Etes vous sur de vouloir supprimer cet épisode? Les commentaires associés seront également supprimés. Cette action est irréversible!</p>
+              <p>Etes vous sur de vouloir supprimer cet épisode? Les commentaires associés seront également supprimés.</p>
               <div class="confirmation center-align">
                   <a href="" id="suppressionEpisode" class="modal-action waves-effect btn waves-effect waves-light red">Oui, supprimer</a>
                   <a href="#!" class="modal-action modal-close waves-effect btn waves-effect waves-light blue">Non, annuler</a>
@@ -118,7 +126,7 @@
         <!-- MODALE CONFIRMATION SUPPRESSION COMMENTAIRE -->
           <div id="modal3" class="modal">
             <div class="modal-content">
-              <p>Etes vous sur de vouloir supprimer ce commentaire? Les réponses à ce commentaire seront également supprimées. </p>
+              <p>Etes vous sur de vouloir supprimer ce commentaire?  </p>
               <div class="confirmation center-align">
                   <a href="" id="suppressionCommentaire" class="modal-action waves-effect btn waves-effect waves-light red">Oui, supprimer</a>
                   <a href="#!" class="modal-action modal-close waves-effect btn waves-effect waves-light blue">Non, annuler</a>
@@ -150,8 +158,6 @@
 {% endblock %} 
 
 {% block js %}
-
-<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=f49rdahytfayja2s979p4a5wptlv3dinl2g73ai9hy4b4hi7"></script>
 
 <script type="text/javascript" src="{{ asset('/js/administration.js') }}"></script>
 

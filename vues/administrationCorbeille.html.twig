@@ -1,0 +1,149 @@
+{% extends "layout.html.twig" %}
+
+{% block titre %} 
+
+    Administration - Corbeille
+
+{% endblock %} 
+
+{% block css %}
+
+    
+<!-- CSS -->
+{% endblock %} 
+
+{% block contenu %}
+        
+    <header id="acceuil" class="white-text z-depth-4">
+        <h1 id="titrePrincipal" class="center-align">Corbeille</h1>
+    </header>
+
+    <main id="contenuAcceuil" class="container">
+
+    <!-- LISTE DES EPISODES -->
+
+       <article class="row">
+            <h3 class="center-align col m6 offset-m3"> Episodes supprimés </h3>
+           <div class="tableau col s12">
+                <ul class="collapsible popout">
+                    <li class="ligne">
+                        <div class="colonne2"> <strong>Titre</strong> </div>
+                        <div class="colonne2"> <strong>Nombre de vues</strong> </div>
+                        <div class="colonne2"> <strong>Auteur</strong> </div>
+                        <div class="colonne2"> <strong>Action</strong> </div>
+                    </li>
+               {% for episode in episodes %}
+               <li>
+                 <div class="collapsible-header ligne">
+                   <div class="colonne2"> {{ episode.titre |title }} </div>
+                   <div class="colonne2"> {{ episode.nombre_vues }} </div>
+                   <div class="colonne2"> {{ episode.auteur }} </div>
+                   <div class="colonne2"> 
+                        <a href="#modal2"  class="btn-floating waves-effect waves-light red tooltipped modal2" data-position="right" data-delay="50" data-tooltip="Restaurer"><i lien="http://alaska.thomassebert.fr/administration/restaurer/{{episode.id}}/Episode" class="material-icons alignement">delete</i></a> 
+                    </div>
+                </div>
+                <div class="collapsible-body" colspan="4">
+                    <div>  {{ episode.contenu | raw }} </div>
+                </div>
+               </li>
+               {% endfor %}
+            </table>
+       </article>
+
+       <!-- LISTE DES SIGNALEMENTS SUPPRIMES -->
+
+       <article class="row">
+
+                <h3 class="center-align col m6 offset-m3"> Signalements supprimés </h3>
+                <div class="tableau col s12">
+                <ul class="collapsible popout">
+                    <li class="ligne">
+                        <div class="colonne"> <strong>Message</strong> </div>
+                        <div class="colonne"> <strong>Auteur</strong> </div>
+                        <div class="colonne"> <strong>Date</strong> </div>
+                    </li>
+                    
+                        {% for signalement in signalements %}
+                            <li>
+                                <div class="collapsible-header ligne">
+                                    <div class="colonne"> {{ signalement.contenu_commentaire }} </div>
+                                    <div class="colonne"> {{ signalement.auteur_commentaire }} </div>
+                                    <div class="colonne"> {{ signalement.date_publication_commentaire }} </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+       </article>
+
+      <!-- LISTE DES COMMENTAIRES SUPPRIMES -->
+
+       <article class="row">
+
+                <h3 class="center-align col m6 offset-m3"> Commentaires supprimés </h3>
+                <div class="tableau col s12">
+                <ul class="collapsible popout">
+                    <li class="ligne">
+                        <div class="colonne"> <strong>Commentaire</strong> </div>
+                        <div class="colonne"> <strong>Auteur</strong> </div>
+                        <div class="colonne"> <strong>Date</strong> </div>
+                        <div class="colonne"> <strong>Action</strong> </div>
+                    </li>
+                    
+                        {% for commentaire in commentaires %}
+                                <div class="collapsible-header ligne">
+                                    <div class="colonne"> {{ commentaire.contenu_commentaire }} </div>
+                                    <div class="colonne"> {{ commentaire.auteur_commentaire }} </div>
+                                    <div class="colonne"> {{ commentaire.date_publication_commentaire }} </div>
+                                    <div class="colonne"> 
+                                        <a href="#modal3"  class="btn-floating waves-effect waves-light red tooltipped modal3" data-position="top" data-delay="50" data-tooltip="Restaurer"><i lien="http://alaska.thomassebert.fr/administration/restaurer/{{signalement.id}}/Commentaire" class="material-icons alignement">delete</i></a> 
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+       </article>
+       
+
+
+       <!-- MODALE CONFIRMATION RESTAURATION EPISODE -->
+          <div id="modal2" class="modal">
+            <div class="modal-content">
+              <p>Etes vous sur de vouloir restaurer cet épisode? Les commentaires associés seront également restaurés.</p>
+              <div class="confirmation center-align">
+                  <a href="" id="suppressionEpisode" class="modal-action waves-effect btn waves-effect waves-light red">Oui, restaurer</a>
+                  <a href="#!" class="modal-action modal-close waves-effect btn waves-effect waves-light blue">Non, annuler</a>
+              </div>
+            </div>
+          </div>
+
+        <!-- MODALE CONFIRMATION RESTAURATION COMMENTAIRE -->
+          <div id="modal3" class="modal">
+            <div class="modal-content">
+              <p>Etes vous sur de vouloir restaurer ce commentaire? </p>
+              <div class="confirmation center-align">
+                  <a href="" id="suppressionCommentaire" class="modal-action waves-effect btn waves-effect waves-light red">Oui, restaurer</a>
+                  <a href="#!" class="modal-action modal-close waves-effect btn waves-effect waves-light blue">Non, annuler</a>
+              </div>
+            </div>
+          </div>
+
+    </main>
+        
+<!-- CONTENU -->
+{% endblock %} 
+
+{% block footer %}
+
+<a class="waves-effect waves-teal btn-flat" href="http://alaska.thomassebert.fr/">Retour à l'acceuil</a> 
+
+<!-- FOOTER -->
+{% endblock %} 
+
+{% block js %}
+
+<script type="text/javascript" src="{{ asset('/js/administration.js') }}"></script>
+
+<!-- JS -->
+{% endblock %} 
