@@ -117,5 +117,28 @@ abstract class DAO
     	}
     }
 
+    // RESTAURATION D'UN OBJET SUPPRIME
+    // parametre 1 = (int) ID de l'objet à restaurer
+    // parametre 2 = (string) Type de l'objet
+
+    public function restaurerObjet($idObjet, $typeObjet)
+    {
+        switch ($typeObjet)
+        {
+            case 'Episode' :
+
+                $restaurerEpisode = $this->_bdd->exec("UPDATE episodes_publies SET corbeille = 'non' WHERE ID = ".$idObjet);
+
+   
+                break;
+
+            case 'Commentaire' :
+
+                $restaurerCommentaire = $this->_bdd->exec("UPDATE commentaires SET corbeille = 'non' WHERE ID_episode = ".$idObjet);
+                
+                break;
+        }
+    }
+
 
 }

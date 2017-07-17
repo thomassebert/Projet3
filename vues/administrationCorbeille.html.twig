@@ -47,7 +47,6 @@
                 </div>
                </li>
                {% endfor %}
-            </table>
        </article>
 
        <!-- LISTE DES SIGNALEMENTS SUPPRIMES -->
@@ -66,9 +65,12 @@
                         {% for signalement in signalements %}
                             <li>
                                 <div class="collapsible-header ligne">
-                                    <div class="colonne"> {{ signalement.contenu_commentaire }} </div>
+                                    <div class="colonne"> {{ signalement.contenu_commentaire | truncate(25, true, '...') }} </div>
                                     <div class="colonne"> {{ signalement.auteur_commentaire }} </div>
                                     <div class="colonne"> {{ signalement.date_publication_commentaire }} </div>
+                                </div>
+                                <div class="collapsible-body" colspan="4">
+                                    <div>  {{ signalement.contenu_commentaire }} </div>
                                 </div>
                             </li>
                         {% endfor %}
@@ -92,12 +94,15 @@
                     
                         {% for commentaire in commentaires %}
                                 <div class="collapsible-header ligne">
-                                    <div class="colonne"> {{ commentaire.contenu_commentaire }} </div>
+                                    <div class="colonne"> {{ commentaire.contenu_commentaire | truncate(25, true, '...') }} </div>
                                     <div class="colonne"> {{ commentaire.auteur_commentaire }} </div>
                                     <div class="colonne"> {{ commentaire.date_publication_commentaire }} </div>
                                     <div class="colonne"> 
-                                        <a href="#modal3"  class="btn-floating waves-effect waves-light red tooltipped modal3" data-position="top" data-delay="50" data-tooltip="Restaurer"><i lien="http://alaska.thomassebert.fr/administration/restaurer/{{signalement.id}}/Commentaire" class="material-icons alignement">delete</i></a> 
+                                        <a href="#modal3"  class="btn-floating waves-effect waves-light red tooltipped modal3" data-position="top" data-delay="50" data-tooltip="Restaurer"><i lien="http://alaska.thomassebert.fr/administration/restaurer/{{commentaire.id}}/Commentaire" class="material-icons alignement">delete</i></a> 
                                     </div>
+                                        <div class="collapsible-body" colspan="4">
+                                    <div>  {{ commentaire.contenu_commentaire }} </div>
+                                </div>
                                 </div>
                             </li>
                         {% endfor %}

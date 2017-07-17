@@ -263,4 +263,24 @@ $app->get('/administration/corbeille', function () use ($app)
     	));
 });
 
+// ACTION RESTAURATION D'UN ELEMENT
+// exit = (url) Redirection vers la page d'acceuil administration
+
+$app->match('/administration/restaurer/{id}/{typeElement}', function($id, $typeElement) use ($app)
+{
+	switch ($typeElement) 
+	{
+    	case 'Episode' :
+    		$restauration = $app['dao.episode']->restaurerObjet($id, $typeElement);
+    		break;
+
+    	case 'Commentaire' :
+    		$restauration = $app['dao.user']->restaurerObjet($id, $typeElement);
+    		break;
+	}
+		
+	header('Location: http://alaska.thomassebert.fr/administration');
+  	exit();
+
+});
 
