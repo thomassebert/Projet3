@@ -15,13 +15,14 @@
 {% block contenu %}
         
     <header id="acceuil" class="white-text z-depth-4">
-        <h1 id="titrePrincipal" class="center-align">Corbeille</h1>
+        <a class="left-align btn waves-effect waves-teal" href="http://alaska.thomassebert.fr/administration">Retour à l'administration</a><h1 id="titrePrincipal" class="center-align">Corbeille</h1>
     </header>
 
     <main id="contenuAcceuil" class="container">
 
     <!-- LISTE DES EPISODES -->
 
+    {% if episodes %}
        <article class="row">
             <h3 class="center-align col m6 offset-m3"> Episodes supprimés </h3>
            <div class="tableau col s12">
@@ -48,9 +49,13 @@
                </li>
                {% endfor %}
        </article>
+    {% else %}
+      <p class="center-align"> Aucun épisode n'a été supprimé</p>
+    {% endif %}
 
       <!-- LISTE DES COMMENTAIRES SUPPRIMES -->
 
+      {% if commentaires %}
        <article class="row">
 
                 <h3 class="center-align col m6 offset-m3"> Commentaires supprimés </h3>
@@ -80,10 +85,14 @@
                     </ul>
                 </div>
        </article>
+    {% else %}
+      <p class="center-align"> Aucun commentaire n'a été supprimé</p>
+    {% endif %}
        
 
        <!-- LISTE DES SIGNALEMENTS SUPPRIMES -->
 
+    {% if signalements %}
        <article class="row">
 
                 <h3 class="center-align col m6 offset-m3"> Signalements supprimés </h3>
@@ -110,6 +119,9 @@
                     </ul>
                 </div>
        </article>
+    {% else %}
+      <p class="center-align"> Aucun signalement n'a été supprimé</p>
+    {% endif %}
 
 
        <!-- MODALE CONFIRMATION RESTAURATION EPISODE -->
@@ -141,7 +153,7 @@
 
 {% block footer %}
 
-<a class="waves-effect waves-teal btn-flat" href="http://alaska.thomassebert.fr/">Retour à l'acceuil</a> 
+<a class="waves-effect waves-teal btn-flat" href="http://alaska.thomassebert.fr/">Retour au site</a> 
 
 <!-- FOOTER -->
 {% endblock %} 

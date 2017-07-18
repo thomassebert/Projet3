@@ -18,11 +18,19 @@
 {% block contenu %}
         
         <header id="acceuil" class="white-text z-depth-4">
-            <h1 id="titrePrincipal" class="center-align">Editeur</h1>
+            <a class="left-align btn waves-effect waves-teal" href="http://alaska.thomassebert.fr/administration">Retour à l'administration</a><h1 id="titrePrincipal" class="center-align">Editeur</h1>
+            <div class="center-align">  
+                {% if id != 0 %}
+                    {% if episode.etat == 'publié' %}
+                      Episode publié le {{ episode.date_publication}}
+                    {% else %}
+                    Brouillon créé le {{ episode.date_publication}}
+                    {% endif %}
+                {% endif %}
+            </div>
         </header>
 
         
-
     
         <main id="contenuAcceuil" class="container">
 
@@ -55,19 +63,17 @@
              }}) }}
              </div>
              <div class="row">
-                <div class="file-field input-field col s9">
+                <div class="file-field input-field col s7">
                     <div class="btn">
                         <span>Ajouter une image</span>
                         {{ form_errors(formulaireEditeur.image) }}
                         {{ form_widget(formulaireEditeur.image) }}
                     </div>
-                <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text">
-                 </div>
-                </div>
-            </div> 
-            <div class="row">
-                <div class="input-field col s4 offset-s2">
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div> 
+                <div class="input-field col s5">
                     {{ form_errors(formulaireEditeur.etat) }}
                     {{ form_widget(formulaireEditeur.etat, { 'attr':  {
                          'class' : 'validate',
@@ -75,22 +81,16 @@
                      }}) }}
                     <label for="formulaire_editeur[etat]">Visibilité</label>
                 </div>
-                <div>ATTENTION: tous les champs doivent être remplis! </div>
-                <button class="col s4 offset-s2 btn waves-effect waves-teal" type="submit" name="action">Enregistrer</button> 
+            </div>
+            <div class="row">
+                <div class="col s8 offset-s4">
+                    <div class="right-align">Tous les champs doivent être remplis! <button class="right-align btn waves-effect waves-teal" type="submit" name="action">Enregistrer</button> </div>
+                    
+                </div> 
             </div> 
             
         {{ form_end(formulaireEditeur) }}
         {% endif %}
-
-        <div>  
-        {% if id != 0 %}
-         {% if episode.etat == 'publié' %}
-                Episode publié le {{ episode.date_publication}}
-                {% else %}
-                Brouillon créé le {{ episode.date_publication}}
-             {% endif %}
-        {% endif %}
-        </div>
            
         </main>
  
@@ -99,7 +99,7 @@
 
 {% block footer %}
 
-<a class="waves-effect waves-teal btn-flat" href="http://alaska.thomassebert.fr/">Retour à l'acceuil</a> 
+<a class="waves-effect waves-teal btn-flat" href="http://alaska.thomassebert.fr/">Retour au site</a> 
 
 <!-- FOOTER -->
 {% endblock %} 

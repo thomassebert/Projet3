@@ -43,9 +43,6 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
 ));
 
 
-
-
-
 // Register services.
 $app['dao.episode'] = function ($app) {
     return new projet3\DAO\EpisodeDAO($app['db']);

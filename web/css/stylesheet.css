@@ -5,6 +5,12 @@ body {
     font-family: 'Raleway', sans-serif;
   }
 
+ 
+h1
+{
+	font-family:  'Dancing Script', cursive;
+}
+
 main {
     flex: 1 0 auto;
   }
@@ -201,6 +207,7 @@ svg{
   background-size: .6em 100%;
   font-family:  'Dancing Script', cursive;
 }
+
 
 .text--line {
   font-size: 4em;

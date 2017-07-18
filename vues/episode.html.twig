@@ -16,7 +16,7 @@
 {% block contenu %}
 
     <header id="accueil">
-        <a class="btn waves-effect waves-teal" href="http://alaska.thomassebert.fr/">Retour à l'acceuil</a>
+        <a class="left-align btn waves-effect waves-teal" href="http://alaska.thomassebert.fr/">Retour à l'acceuil</a>
         <div class="center-align white-text" id="titreAnimation">
             <h1 class="titreEpisode">{{ episode.titre |title }}</h1>
             <p>{{ episode.date_publication }}</p>
@@ -29,16 +29,26 @@
         
 
         <article class="row csd">
-            <p><img src="/assets/images/{{ episode.image }}" width="66%" class="col s8 offset-s2"></p>
+            <img src="/assets/images/{{ episode.image }}" width="70%" class="center-align">
             <p class="flow-text col s12">{{ episode.contenu | raw }}</p>
         </article>
 
         <!-- AJOUT DE COMMENTAIRE -->
-        <article class="row">
-
-            <a class="waves-effect waves-light btn modalbutton" idcommentaire="NULL" niveaucommentaire="1" signalement="non" href="#modal1">Ajouter un commentaire</a> <br>
+        <article class="row" id="commentaires">
             {% if commentaires %}
-                {{ nbCommentaire }} commentaires
+                {% if commentaires|length <= 1 %}
+                    <div class="center-align"> {{ nbCommentaire }} commentaire </div><br/>
+                {% else %}
+                    <div class="center-align"> {{ nbCommentaire }} commentaires </div><br/>
+                {% endif %}
+            {% endif %}
+
+            <a class="col s4 offset-s4 waves-effect waves-light btn modalbutton" idcommentaire="NULL" niveaucommentaire="1" signalement="non" href="#modal1">Ajouter un commentaire</a> <br/>
+            
+            {% if alerte %}
+            <div class="center-align">
+                Votre commentaire à bien été publié!
+            </div>
             {% endif %}
 
             <!-- FORMULAIRE D'AJOUT DE COMMENTAIRE OU DE SIGNALEMENT -->
@@ -118,12 +128,6 @@
                 {{ form_end(formulaireCommentaire) }}
 
             </div> <!-- FIN DU FORMULAIRE -->
-                
-            {% if alerte %}
-            <div class="alert alert-success">
-                Votre commentaire à bien été publié!
-            </div>
-            {% endif %}
 
             {% endif %}
         </article>
@@ -193,7 +197,7 @@
                 {% endif %}
 
                 {% else %}
-                Aucun commentaire
+                <div class="center-align">Aucun commentaire</div>
 
             {% endfor %}
         </div> <!-- FIN DES COMMENTAIRES -->

@@ -15,7 +15,7 @@
 {% block contenu %}
         
     <header id="acceuil" class="white-text z-depth-4">
-        <h1 id="titrePrincipal" class="center-align">Administration</h1>
+        <a class="left-align btn waves-effect waves-teal" href="http://alaska.thomassebert.fr">Aller sur le site</a><h1 id="titrePrincipal" class="center-align">Administration</h1>
     </header>
 
     <main id="contenuAcceuil" class="container">
@@ -45,8 +45,17 @@
                         <a href="#modal2"  class="btn-floating waves-effect waves-light red tooltipped modal2" data-position="right" data-delay="50" data-tooltip="Supprimer"><i lien="http://alaska.thomassebert.fr/administration/supprimer/{{episode.id}}/Episode" class="material-icons alignement">delete</i></a> 
                     </div>
                 </div>
-                <div class="collapsible-body" colspan="4">
+                <div class="collapsible-body row" colspan="4">
                     <div>  {{ episode.contenu | raw }} </div>
+                    
+                    {% set break = false %}
+                    {% for commentaire in commentaires if not break %}
+                      {% if commentaire.id_episode == episode.id %}
+                          <div class="divider"></div><br/>
+                          <a class="col s4 offset-s4 btn waves-effect waves-teal" href="http://alaska.thomassebert.fr/episode/{{ episode.id }}#commentaires">Voir les commentaires</a>
+                          {% set break = true %}
+                      {% endif %}
+                    {% endfor %}
                 </div>
                </li>
                {% endfor %}
@@ -142,7 +151,7 @@
 
 {% block footer %}
 
-<a class="waves-effect waves-teal btn-flat" href="http://alaska.thomassebert.fr/">Retour à l'acceuil</a> 
+<a class="waves-effect waves-teal btn-flat" href="http://alaska.thomassebert.fr/">Retour au site</a> 
 
 <!-- FOOTER -->
 {% endblock %} 
