@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ControleurEpisode 
 {
-	
+
 	// PAGE EPISODE
 	// return = (vue) episode.html.twig
 
@@ -44,6 +44,9 @@ class ControleurEpisode
 			{
 	            $app['dao.commentaire']->creerCommentaire($commentaire, $id);
 	            $alerte = "Votre commentaire à bien été publié";
+	            $request = null;
+	            header('Location: http://alaska.thomassebert.fr/episode/'.$id);
+	  			exit();
 	    	}
 
     	$vueFormulaire = $formulaire->createView();

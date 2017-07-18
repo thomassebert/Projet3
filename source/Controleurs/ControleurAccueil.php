@@ -6,7 +6,7 @@ use Silex\Application;
 class ControleurAccueil 
 {
 
-	// PAGE ACCEUIL
+	
 	// return = (vue) index.html.twig
 
 	public function obtenirVue(Application $app)

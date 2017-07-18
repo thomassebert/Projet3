@@ -43,6 +43,12 @@
 
         <main id="contenuAcceuil" class="container">
 
+        <div class="row">
+            <p class="col s8 offset-s2 flow-text">" Pour mon nouveau roman, intitulé 'Billet simple pour l'Alaska', j'ai décidé d'opter pour une nouvelle forme de publication. Ainsi, chaque semaine, vous retrouverez sur ce blog un nouvel épisode du roman. N'hésitez pas à commenter afin de me donner vos impressions, vos idées pour la suite, ce qui vous a plu ou non, et j'essaierai d'en tenir compte pour l'épisode suivant!"</p>  
+        </div>
+
+        <br/><div class="divider"></div><br/>
+
         <!-- AFFICHE LA LISTE DES EPISODES PUBLIES DANS DES 'CARDS' -->
             <div id="listeEpisodes">
                 {% for episode in episodes %}
@@ -78,6 +84,8 @@
 {% endblock %} 
 
 {% block footer %}
+
+    
 
     <a class="waves-effect waves-teal btn-flat" href="http://alaska.thomassebert.fr/administration">Administration</a> 
 

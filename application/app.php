@@ -29,6 +29,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
             'anonymous' => true,
             'logout' => true,
             'form' => array('login_path' => '/login', 'check_path' => '/login_check'),
+            'logout' => array('logout_path' => '/logout', 'invalidate_session' => true),
             'users' => function () use ($app) {
                 return new projet3\DAO\UtilisateurDAO($app['db']);
             },

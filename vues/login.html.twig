@@ -28,22 +28,30 @@
     {% endif %}
 
     
-    <main>
+    <main class="container">
 
         <!-- FORMULAIRE DE CONNEXION -->
-       <form method="post" role="form" action="{{ path('login_check') }}">
-           <div class="input-field col s12 m6">
-               <input type="text" value="{{ last_username }}" name="_username" id="username"/>
-               <label for="username">Votre identifiant</label>
-           </div>
-           <div class="input-field col s12 m6">
-               <input type="password" name="_password" id="password"/>
-               <label for="password">Votre mot de passe</label>
-           </div>
-           <button class="btn waves-effect waves-teal" type="submit" name="action">Connexion</button>    
-       </form>
+      <div class="row">
+         <form method="post" role="form" action="{{ path('login_check') }}">
+             <div class="input-field col s10 offset-s1 m4 offset-m1">
+                 <input type="text" value="{{ last_username }}" name="_username" id="username"/>
+                 <label for="username">Votre identifiant</label>
+             </div>
+             <div class="input-field col s10 offset-s1 m4 offset-m2">
+                 <input type="password" name="_password" id="password"/>
+                 <label for="password">Votre mot de passe</label>
+             </div>
+             <button class="col s4 offset-s7 m2 offset-m9 btn waves-effect waves-teal" type="submit" name="action">Connexion</button>    
+         </form>
+      </div>
 
-       <a class="btn waves-effect waves-teal" href="http://alaska.thomassebert.fr/">Retour à l'acceuil</a>
+      <!-- EXPLICATIONS VISITEURS -->
+      <br/><div class="divider"></div><br/>
+
+      <div class="row">
+          <p class="col s10 offset-s1"> Ce site à été réalisé dans le cadre d'une formation. Afin de pouvoir présenter l'ensemble de mon travai, l'accès au panneau d'administration peut se faire pour tout visiteur en utilisant 'Visiteur' comme identifiant et mot de passe. Toutefois, seul l'administrateur du site (Jean Forteroche) peut l'utiliser. Les visiteurs ne pourront que visiter le panneau d'administration.  </p>
+      </div>
+
     </main>
 
 <!-- CONTENU -->
@@ -51,7 +59,7 @@
 
 {% block footer %}
 
-    <a class="btn waves-effect waves-teal" href="http://alaska.thomassebert.fr/">Retour au site</a>
+
 
 <!-- FOOTER -->
 {% endblock %} 
