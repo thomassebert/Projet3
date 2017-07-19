@@ -116,8 +116,12 @@
             <div class="modal-content">
               <p>Etes vous sur de vouloir supprimer cet épisode? Les commentaires associés seront également supprimés.</p>
               <div class="confirmation center-align">
+                {% if app.user.username == 'Visiteur' %}
+                  <a href="" id="suppressionEpisode" class="modal-action waves-effect btn disabled waves-effect waves-light red">Oui, supprimer</a>
+                {% else %}
                   <a href="" id="suppressionEpisode" class="modal-action waves-effect btn waves-effect waves-light red">Oui, supprimer</a>
-                  <a href="#!" class="modal-action modal-close waves-effect btn waves-effect waves-light blue">Non, annuler</a>
+                {% endif %}
+                <a href="#!" class="modal-action modal-close waves-effect btn waves-effect waves-light blue">Non, annuler</a>
               </div>
             </div>
           </div>
@@ -127,7 +131,11 @@
             <div class="modal-content">
               <p>Etes vous sur de vouloir supprimer ce commentaire?  </p>
               <div class="confirmation center-align">
+                {% if app.user.username == 'Visiteur' %}
+                  <a href="" id="suppressionCommentaire" class="modal-action waves-effect btn disabled waves-effect waves-light red">Oui, supprimer</a>
+                {% else %}
                   <a href="" id="suppressionCommentaire" class="modal-action waves-effect btn waves-effect waves-light red">Oui, supprimer</a>
+                {% endif %}
                   <a href="#!" class="modal-action modal-close waves-effect btn waves-effect waves-light blue">Non, annuler</a>
               </div>
             </div>
@@ -138,7 +146,11 @@
             <div class="modal-content">
               <p>Annuler le signalement et conserver ce commentaire? </p>
               <div class="confirmation center-align">
+                {% if app.user.username == 'Visiteur' %}
+                  <a href="" id="suppressionSignalement" class="modal-action waves-effect btn disabled waves-effect waves-light green">Oui, conserver</a>
+                {% else %}
                   <a href="" id="suppressionSignalement" class="modal-action waves-effect btn waves-effect waves-light green">Oui, conserver</a>
+                {% endif %}
                   <a href="#!" class="modal-action modal-close waves-effect btn waves-effect waves-light blue">Non, annuler</a>
               </div>
             </div>

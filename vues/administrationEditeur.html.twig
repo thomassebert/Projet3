@@ -84,7 +84,11 @@
             </div>
             <div class="row">
                 <div class="col s8 offset-s4">
-                    <div class="right-align">Tous les champs doivent être remplis! <button class="right-align btn waves-effect waves-teal" type="submit" name="action">Enregistrer</button> </div>
+                    {% if app.user.username == 'Visiteur' %}
+                      <div class="right-align">Tous les champs doivent être remplis! <button class="right-align btn disabled waves-effect waves-teal" type="submit" name="action">Enregistrer</button> </div>
+                    {% else %}
+                        <div class="right-align">Tous les champs doivent être remplis! <button class="right-align btn waves-effect waves-teal" type="submit" name="action">Enregistrer</button> </div>              
+                    {% endif %}
                     
                 </div> 
             </div> 

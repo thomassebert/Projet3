@@ -37,6 +37,7 @@ footer
 {
 	background-color: #5b677a !important; 
 }
+
 .card
 {
 	display: flex !important;
@@ -315,4 +316,23 @@ svg{
 	flex-wrap: nowrap;
 	flex-direction: row;
 	justify-content: space-between;
+}
+
+.hide
+{
+	display: none !important;
+}
+
+#pagination
+{
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.boutonPage
+{
+	min-width: 20px;
 }

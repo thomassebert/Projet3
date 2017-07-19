@@ -129,7 +129,11 @@
             <div class="modal-content">
               <p>Etes vous sur de vouloir restaurer cet épisode? Les commentaires associés seront également restaurés.</p>
               <div class="confirmation center-align">
-                  <a href="" id="restaurationEpisode" class="modal-action waves-effect btn waves-effect waves-light red">Oui, restaurer</a>
+                {% if app.user.username == 'Visiteur' %}
+                  <a href="" id="restaurationEpisode" class="modal-action waves-effect btn disabled waves-effect waves-light red">Oui, restaurer</a>
+                {% else %}
+                    <a href="" id="restaurationEpisode" class="modal-action waves-effect btn waves-effect waves-light red">Oui, restaurer</a>              
+                {% endif %}
                   <a href="#!" class="modal-action modal-close waves-effect btn waves-effect waves-light blue">Non, annuler</a>
               </div>
             </div>
@@ -140,7 +144,11 @@
             <div class="modal-content">
               <p>Etes vous sur de vouloir restaurer ce commentaire? </p>
               <div class="confirmation center-align">
-                  <a href="" id="restaurationCommentaire" class="modal-action waves-effect btn waves-effect waves-light red">Oui, restaurer</a>
+                {% if app.user.username == 'Visiteur' %}
+                  <a href="" id="restaurationCommentaire" class="modal-action waves-effect btn disabled waves-effect waves-light red">Oui, restaurer</a>
+                {% else %}
+                    <a href="" id="restaurationCommentaire" class="modal-action waves-effect btn waves-effect waves-light red">Oui, restaurer</a>              
+                {% endif %}
                   <a href="#!" class="modal-action modal-close waves-effect btn waves-effect waves-light blue">Non, annuler</a>
               </div>
             </div>

@@ -45,3 +45,5 @@ $app->get('/administration/corbeille', "projet3\Controleurs\ControleurCorbeille:
 
 $app->match('/administration/restaurer/{id}/{typeElement}', "projet3\Controleurs\ControleurCorbeille::restaurer" );
 
+
+

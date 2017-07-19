@@ -27,14 +27,16 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
      */
     public function loadUserByUsername($username)
     {
-    	$username = (string) $username;
-        $requeteSql = 'SELECT * FROM utilisateurs WHERE username = '.$username.' AND corbeille = "non"';
-        $utilisateurs = $this->obtenirObjet($requeteSql, 'UtilisateurElement');
-        foreach ($utilisateurs as $key => $value) {
-        	$utilisateur = $value;
+        $username = (string) $username;
+
+        $requeteSql = 'SELECT * FROM utilisateurs WHERE username = "'.$username.'"';
+        $resultatsRequete = $this->_bdd->fetchAll($requeteSql);
+        foreach ($resultatsRequete as $donneesObjet) 
+        {
+            $objet = new UtilisateurElement($donneesObjet);
         }
         
-        return $utilisateur;
+        return $objet;
         
     }  
 
