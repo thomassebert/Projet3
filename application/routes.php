@@ -1,5 +1,8 @@
 <?php
 
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+
 // PAGE ACCEUIL
 // return = (vue) index.html.twig
 
@@ -46,4 +49,15 @@ $app->get('/administration/corbeille', "projet3\Controleurs\ControleurCorbeille:
 $app->match('/administration/restaurer/{id}/{typeElement}', "projet3\Controleurs\ControleurCorbeille::restaurer" );
 
 
+// PAGE D'ERREUR
 
+$app->error(function (\Exception $e, Request $request, $code) {
+    switch ($code) {
+        case 404:
+            $message = "Cette page n'existe pas!";
+            break;
+        default:
+            $message = "Désolé, il semblerait que quelque chose se soit très mal passé... ";
+    }
+    return new Response($message);
+});
