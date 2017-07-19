@@ -209,7 +209,12 @@
 
 {% block footer %}
 
+<div class="flexx">
     <a class="waves-effect waves-teal btn-flat" href="http://alaska.thomassebert.fr/administration">Administration</a> 
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class="right-align waves-effect waves-teal btn-flat" href="{{ path('logout') }}">Déconnexion</a>
+    {% endif %}
+</div>
 
 <!-- FOOTER -->
 {% endblock %}
