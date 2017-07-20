@@ -1,7 +1,3 @@
-$(document).ready(function(){
-      $('.parallax').parallax();
-    });
-
 
 function pagination(page)
 {
@@ -42,7 +38,6 @@ $(document).ready(function()
 			nombre ++;
 		}
 	}
-	
 
     pagination(1);	
 

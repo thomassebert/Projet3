@@ -25,19 +25,14 @@ tinymce.init({
   ]
  });
 
+
  $(document).ready(function() {
     $('select').material_select();
-  });
-
- $(document).ready(function(){
     $('.collapsible').collapsible();
-  });
-
-$(document).ready(function(){
-    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
   });
 
+// MODALES DE CONFIRMATION
 
 $(document).ready(function(){
 var boutonsSupprimer = document.getElementsByClassName("modal2");
