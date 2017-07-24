@@ -1,0 +1,69 @@
+{% extends 'layout.html.twig' %}
+
+{% block titre %}
+
+    Modifier le mot de passe
+
+
+{% endblock %} 
+
+{% block css %}
+
+    
+
+<!-- CSS -->
+{% endblock %} 
+
+{% block contenu %}
+
+
+    <header id="acceuil" class="white-text z-depth-4">
+        <a class="left-align btn waves-effect waves-teal" href="http://alaska.thomassebert.fr/administration">Retour à l'administration</a><h1 id="titrePrincipal" class="center-align">Nouveau Mot De Passe</h1>
+    </header>
+
+    {% if message %}
+        <div class="">
+            <strong>Erreur: </strong> {{ message }}
+        </div>
+    {% endif %}
+
+    
+    <main class="container">
+
+        <!-- FORMULAIRE DE CONNEXION -->
+      <div class="row">
+         <form method="post" action='/administration/motdepasse/{{ app.user.id }}/oui'>
+             <div class="input-field col s12">
+                 <input type="password" name="mdp1" id="password1"/>
+                 <label for="password1">Nouveau mot de passe</label>
+             </div>
+             <div class="input-field col s12">
+                 <input type="password" name="mdp2" id="password2"/>
+                 <label for="password2">Confirmez le nouveau mot de passe</label>
+             </div>
+              {% if app.user.username == 'Visiteur' %}
+                <button class="col s4 offset-s7 m2 offset-m9 btn disabled waves-effect waves-teal" type="submit" name="action">Valider</button> 
+              {% else %}
+                <button class="col s4 offset-s7 m2 offset-m9 btn waves-effect waves-teal" type="submit" name="action">Valider</button>           
+              {% endif %}  
+         </form>
+      </div>
+
+    </main>
+
+<!-- CONTENU -->
+{% endblock %} 
+
+{% block footer %}
+
+
+
+<!-- FOOTER -->
+{% endblock %} 
+
+{% block js %}
+
+
+
+<!-- JS -->
+{% endblock %} 

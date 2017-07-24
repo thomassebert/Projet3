@@ -7,6 +7,8 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use projet3\Domaine\UtilisateurElement;
+use Silex\Application;
+
 
 class UtilisateurDAO extends DAO implements UserProviderInterface
 {
@@ -20,6 +22,11 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
         $requeteSql = 'SELECT * FROM utilisateurs WHERE ID ='.$idUtilisateur.' AND corbeille = "non"';
         $utilisateur = $this->obtenirObjet($requeteSql, 'UtilisateurElement');
         return $utilisateur;
+    }
+
+    public function modifierMotDePasse($nouveauMotDePasse, $nouveauSel, $id)
+    {
+            $requeteSql = $this->_bdd->exec('UPDATE utilisateurs SET password = "'.$nouveauMotDePasse.'", salt = "'.$nouveauSel.'" WHERE ID = '.$id);
     }
 
     /**

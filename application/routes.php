@@ -43,11 +43,15 @@ $app->match('/administration/editer/{id}', "projet3\Controleurs\ControleurEditeu
 
 $app->get('/administration/corbeille', "projet3\Controleurs\ControleurCorbeille::obtenirVue" );
 
+// PAGE NOUVEAU MDP (ADMINISTRATION)
+// return = (vue) administrationNouveauMdp.html.twig
+
+$app->match('/administration/motdepasse/{id}/{post}', "projet3\Controleurs\ControleurNouveauMdp::obtenirVue" );
+
 // ACTION RESTAURATION D'UN ELEMENT
 // exit = (url) Redirection vers la page d'acceuil administration
 
 $app->match('/administration/restaurer/{id}/{typeElement}', "projet3\Controleurs\ControleurCorbeille::restaurer" );
-
 
 // PAGE D'ERREUR
 
