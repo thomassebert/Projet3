@@ -74,4 +74,5 @@ $app->error(function(\Exception $e, Request $request, $code) use ($app)
     	'message' => $message,
     	'code' => $code
     	));
-    }); 
+    });
+     

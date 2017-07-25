@@ -192,5 +192,4 @@ class CommentaireElement extends Element
  		$this->_corbeille = $corbeille; 
  	}
 
-
 }

@@ -117,10 +117,10 @@ class EpisodeElement extends Element
  		$this->_auteur = $auteur; 
  	}
 
- 	public function setImage($image)
+ 	public function setImage($image = null)
  	{
- 		$image = $image;
- 		$this->_image = $image; 
+ 			$image = $image;
+ 			$this->_image = $image; 	
  	}
 
  	public function setCorbeille($corbeille)

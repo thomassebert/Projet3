@@ -63,17 +63,23 @@ class EpisodeDAO extends DAO
     public function miseAJourEpisode($id, EpisodeElement $episode)
     {
         $id = (int) $id;
-        $requeteSql = $this->_bdd->prepare('UPDATE episodes_publies SET titre=:titre, date_publication=:date_publication, nombre_vues=:nombre_vues, contenu=:contenu, etat=:etat, auteur=:auteur, image=:image WHERE ID = :id');
+        $requeteSql = $this->_bdd->prepare('UPDATE episodes_publies SET titre=:titre, nombre_vues=:nombre_vues, contenu=:contenu, etat=:etat, auteur=:auteur WHERE ID = :id');
         $requeteSql->execute(array(
              'titre' => $episode->titre(),
-             'date_publication' => $episode->date_publication(),
              'nombre_vues' => $episode->nombre_vues(),
              'contenu' => $episode->contenu(),
              'etat' => $episode->etat(),
              'auteur' => $episode->auteur(),
-             'image' => $episode->image(),
              'id' => $id
             ));
+        if(!is_null($episode->image()))
+        {
+            $requeteSql = $this->_bdd->prepare('UPDATE episodes_publies SET image=:image WHERE ID = :id');
+            $requeteSql->execute(array(
+                 'image' => $episode->image(),
+                 'id' => $id
+                 ));
+        }
     }
 
     //COMPTEUR DE VUES D'UN EPISODE

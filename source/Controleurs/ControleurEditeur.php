@@ -38,20 +38,29 @@ class ControleurEditeur
 		// Mise à jour ou création de l'épisode en BDD
 		// exit = (url) Redirection vers la page d'acceuil administration
 
-		if ($formulaire->isSubmitted() && $formulaire->isValid() && $episode->titre() != null && $episode->contenu() != null && $episode->image() != null && $episode->auteur() != null && $episode->etat() != null) 
+		if ($formulaire->isSubmitted() && $formulaire->isValid() && $episode->titre() != null && $episode->contenu() != null && $episode->auteur() != null && $episode->etat() != null && ($episode->image() != null || $id != 0) )
 		{
 			// Récupération du fichier
-	        $donnees = $request->files->get($formulaire->getName());
-	        $fichier = $donnees['image'];
+		    $donnees = $request->files->get($formulaire->getName());
+		    $fichier = $donnees['image'];
 
-	        // Création d'un nom unique
-	        $nomFichier = md5(uniqid()).'.'.$fichier->guessExtension();
+		    if(!is_null($fichier))
+		    {
+		        // Création d'un nom unique
+		        $nomFichier = md5(uniqid()).'.'.$fichier->guessExtension();
 
-	        // Déplacement vers le dossier images
-	        $fichier->move('assets/images', $nomFichier);
+		        // Déplacement vers le dossier images
+		        $fichier->move('assets/images', $nomFichier);
 
-	        // Modification de l'attribut image: remplacement de l'image par son nom
-	        $episode->setImage($nomFichier);
+		        // Modification de l'attribut image: remplacement de l'image par son nom
+		        $episode->setImage($nomFichier);
+		    }
+		    else
+		    {
+		    	$episode->setImage(null);
+		    }
+		        
+
 
 			if ((!$id == 0) && ($episode->etat() == 'publié')) 
 			{

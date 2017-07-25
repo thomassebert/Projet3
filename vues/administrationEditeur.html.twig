@@ -84,10 +84,17 @@
             </div>
             <div class="row">
                 <div class="col s8 offset-s4">
-                    {% if app.user.username == 'Visiteur' %}
-                      <div class="right-align">Tous les champs doivent être remplis! <button class="right-align btn disabled waves-effect waves-teal" type="submit" name="action">Enregistrer</button> </div>
+                    {% if id != 0 %}
+                    <div class="right-align">Hormis l'image, tous les champs doivent être remplis! 
                     {% else %}
-                        <div class="right-align">Tous les champs doivent être remplis! <button class="right-align btn waves-effect waves-teal" type="submit" name="action">Enregistrer</button> </div>              
+                    <div class="right-align">Tous les champs doivent être remplis! 
+                    {% endif %}
+
+                    
+                    {% if app.user.username == 'Visiteur' %}
+                       <button class="right-align btn disabled waves-effect waves-teal" type="submit" name="action">Enregistrer</button> </div>
+                    {% else %}
+                        <button class="right-align btn waves-effect waves-teal" type="submit" name="action">Enregistrer</button> </div>              
                     {% endif %}
                     
                 </div> 
@@ -112,6 +119,7 @@
 {% endblock %} 
 
 {% block js %}
+
 
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=f49rdahytfayja2s979p4a5wptlv3dinl2g73ai9hy4b4hi7"></script>
 
