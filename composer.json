@@ -1,7 +1,8 @@
 {
-    "name" : "composer.json",
+    "name" : "composer",
     "description" : "liste des dépendences",
-    
+    "license": "proprietary",
+
     "require": {
         "silex/silex": "~2.0",
         "doctrine/dbal": "~2.5",
