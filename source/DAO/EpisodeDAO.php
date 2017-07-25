@@ -30,6 +30,7 @@ class EpisodeDAO extends DAO
 
     public function obtenirUnEpisodeParId($idEpisode)
     {
+        $idEpisode = (int) $idEpisode;
         $requeteSql = $this->_bdd->prepare('SELECT * FROM episodes_publies WHERE ID = ? AND corbeille = "non"');
         $episodes = $this->obtenirObjet($requeteSql, 'EpisodeElement', $idEpisode);
         $episode = $episodes[$idEpisode];
@@ -61,7 +62,8 @@ class EpisodeDAO extends DAO
 
     public function miseAJourEpisode($id, EpisodeElement $episode)
     {
-        $requeteSql = $this->_bdd->prepare('UPDATE episodes_publies SET titre=:titre, date_publication=:date_publication, nombre_vues=:nombre_vues, contenu=:contenu, etat=:etat, auteur=:auteur, image=:image WHERE ID = '.$id);
+        $id = (int) $id;
+        $requeteSql = $this->_bdd->prepare('UPDATE episodes_publies SET titre=:titre, date_publication=:date_publication, nombre_vues=:nombre_vues, contenu=:contenu, etat=:etat, auteur=:auteur, image=:image WHERE ID = :id');
         $requeteSql->execute(array(
              'titre' => $episode->titre(),
              'date_publication' => $episode->date_publication(),
@@ -69,7 +71,8 @@ class EpisodeDAO extends DAO
              'contenu' => $episode->contenu(),
              'etat' => $episode->etat(),
              'auteur' => $episode->auteur(),
-             'image' => $episode->image()
+             'image' => $episode->image(),
+             'id' => $id
             ));
     }
 
@@ -78,7 +81,9 @@ class EpisodeDAO extends DAO
 
     public function compteurVues($id)
     {
-        $requeteSql = $this->_bdd->exec('UPDATE episodes_publies SET nombre_vues=nombre_vues+1 WHERE ID = '.$id);
+        $id = (int) $id;
+        $requeteSql = $this->_bdd->prepare('UPDATE episodes_publies SET nombre_vues=nombre_vues+1 WHERE ID = ?');
+        $requeteSql->execute(array($id));
     }
   
 }
