@@ -56,4 +56,22 @@ $app->match('/administration/restaurer/{id}/{typeElement}', "projet3\Controleurs
 // PAGE D'ERREUR
 // // return = (vue) erreur.html.twig
 
-$app->error("projet3\Controleurs\ControleurErreur::obtenirVue"); 
+$app->error(function(\Exception $e, Request $request, $code) use ($app)
+	{
+		switch ($code) 
+		{
+
+	        case 404:
+	            $message = "Cette page n'existe pas!";
+	            break;
+
+	        default:
+	        
+	            $message = "Désolé, il semblerait que quelque chose se soit très mal passé... ";
+	    }
+
+    	return $app['twig']->render('erreur.html.twig', array(
+    	'message' => $message,
+    	'code' => $code
+    	));
+    }); 
