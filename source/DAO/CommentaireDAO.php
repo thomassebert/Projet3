@@ -38,8 +38,9 @@ class CommentaireDAO extends DAO
 
 	public function obtenirCommentairesDunEpisode($idEpisode) 
 	{
-		$requeteSql = 'SELECT * FROM commentaires WHERE ID_episode = '.$idEpisode.' AND signalement = "non" ORDER BY date_publication_commentaire';
-		$commentaires = $this->obtenirObjet($requeteSql, 'CommentaireElement');
+		$idEpisode = (int) $idEpisode;
+		$requeteSql = $this->_bdd->prepare('SELECT * FROM commentaires WHERE ID_episode = ? AND signalement = "non" ORDER BY date_publication_commentaire');
+		$commentaires = $this->obtenirObjet($requeteSql, 'CommentaireElement', $idEpisode);
 		return $commentaires;
 	}
 
@@ -50,8 +51,9 @@ class CommentaireDAO extends DAO
 
 	public function obtenirCommentaireParId($idCommentaire) 
 	{
-		$requeteSql = 'SELECT * FROM commentaires WHERE ID = '.$idCommentaire.' AND corbeille = "non"';
-		$commentaire = $this->obtenirObjet($requeteSql, 'CommentaireElement');
+		$idCommentaire = (int) $idCommentaire;
+		$requeteSql = $this->_$bdd->prepare('SELECT * FROM commentaires WHERE ID = '.$idCommentaire.' AND corbeille = "non"');
+		$commentaire = $this->obtenirObjet($requeteSql, 'CommentaireElement', $idcommentaire);
 		return $commentaire;
 	}
 
@@ -97,7 +99,8 @@ class CommentaireDAO extends DAO
 		//Si le commentaire est une réponse, on change l'état de la valeur "réponse" du commentaire auquel on répond
 		if (!is_null($commentaire->id_commentaire_reponse)) 
 		{
-			$update = $this->_bdd->exec("UPDATE commentaires SET reponse='oui' WHERE id=".$commentaire->id_commentaire_reponse());
+			$update = $this->_bdd->prepare("UPDATE commentaires SET reponse='oui' WHERE id= :id");
+			$update->execute(array('id' => $commentaire->id_commentaire_reponse()));
 		}
 
 		//On insère le commentaire en BDD
