@@ -83,10 +83,10 @@ class CommentaireDAO extends DAO
 
 		foreach ($reponse as $key => $value) 
 		{
-			$signal = $value;
+			return $value;
 		}
 		
-		return $value;
+		
 	}
 
 
