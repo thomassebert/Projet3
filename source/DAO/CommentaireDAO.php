@@ -53,7 +53,7 @@ class CommentaireDAO extends DAO
 	{
 		$idCommentaire = (int) $idCommentaire;
 		$requeteSql = $this->_bdd->prepare('SELECT * FROM commentaires WHERE ID = ? AND corbeille = "non"');
-		$commentaire = $this->obtenirObjet($requeteSql, 'CommentaireElement', $idcommentaire);
+		$commentaire = $this->obtenirObjet($requeteSql, 'CommentaireElement', $idCommentaire);
 		return $commentaire;
 	}
 

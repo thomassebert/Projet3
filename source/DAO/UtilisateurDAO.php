@@ -41,7 +41,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
     {
         $username = (string) $username;
 
-        $requeteSql = $this->_bdd_>prepare('SELECT * FROM utilisateurs WHERE username = ?');
+        $requeteSql = $this->_bdd->prepare('SELECT * FROM utilisateurs WHERE username = ?');
         $requeteSql->execute(array($username));
         $resultatsRequete = $requeteSql;
         foreach ($resultatsRequete as $donneesObjet) 
