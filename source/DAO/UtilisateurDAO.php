@@ -19,14 +19,19 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
 
 	public function obtenirUnUtilisateurParId($idUtilisateur)
     {
-        $requeteSql = 'SELECT * FROM utilisateurs WHERE ID ='.$idUtilisateur.' AND corbeille = "non"';
-        $utilisateur = $this->obtenirObjet($requeteSql, 'UtilisateurElement');
+        $requeteSql = $this->_bdd->prepare('SELECT * FROM utilisateurs WHERE ID = ? AND corbeille = "non"');
+        $utilisateur = $this->obtenirObjet($requeteSql, 'UtilisateurElement', $idUtilisateur);
         return $utilisateur;
     }
 
     public function modifierMotDePasse($nouveauMotDePasse, $nouveauSel, $id)
     {
-            $requeteSql = $this->_bdd->exec('UPDATE utilisateurs SET password = "'.$nouveauMotDePasse.'", salt = "'.$nouveauSel.'" WHERE ID = '.$id);
+            $requeteSql = $this->_bdd->prepare('UPDATE utilisateurs SET password = :nouveauMotDePasse, salt = :nouveauSel WHERE ID = :id ');
+            $requeteSql->execute(array(
+                'nouveauMotDePasse' => $nouveauMotDePasse,
+                'nouveauSel' => $nouveauSel,
+                'id' => $id
+                ))
     }
 
     /**
@@ -36,8 +41,9 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
     {
         $username = (string) $username;
 
-        $requeteSql = 'SELECT * FROM utilisateurs WHERE username = "'.$username.'"';
-        $resultatsRequete = $this->_bdd->fetchAll($requeteSql);
+        $requeteSql = $this->_bdd_>prepare('SELECT * FROM utilisateurs WHERE username = ?');
+        $requeteSql->execute(array($username));
+        $resultatsRequete = $requeteSql;
         foreach ($resultatsRequete as $donneesObjet) 
         {
             $objet = new UtilisateurElement($donneesObjet);
