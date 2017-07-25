@@ -40,7 +40,7 @@
                    <div class="colonne2"> {{ episode.nombre_vues }} </div>
                    <div class="colonne2"> {{ episode.auteur }} </div>
                    <div class="colonne2"> 
-                        <a href="#modal5"  class="btn-floating waves-effect waves-light red tooltipped modal2" data-position="right" data-delay="50" data-tooltip="Restaurer"><i lien="http://alaska.thomassebert.fr/administration/restaurer/{{episode.id}}/Episode" class="material-icons alignement">replay</i></a> 
+                        <a href="#modal5"  class="btn-floating waves-effect waves-light red tooltipped modal5" data-position="right" data-delay="50" data-tooltip="Restaurer"><i lien="http://alaska.thomassebert.fr/administration/restaurer/{{episode.id}}/Episode" class="material-icons alignement">replay</i></a> 
                     </div>
                 </div>
                 <div class="collapsible-body" colspan="4">
@@ -74,7 +74,7 @@
                                     <div class="colonne"> {{ commentaire.auteur_commentaire }} </div>
                                     <div class="colonne"> {{ commentaire.date_publication_commentaire }} </div>
                                     <div class="colonne"> 
-                                        <a href="#modal6"  class="btn-floating waves-effect waves-light red tooltipped modal3" data-position="top" data-delay="50" data-tooltip="Restaurer"><i lien="http://alaska.thomassebert.fr/administration/restaurer/{{commentaire.id}}/Commentaire" class="material-icons alignement">replay</i></a> 
+                                        <a href="#modal6"  class="btn-floating waves-effect waves-light red tooltipped modal6" data-position="top" data-delay="50" data-tooltip="Restaurer"><i lien="http://alaska.thomassebert.fr/administration/restaurer/{{commentaire.id}}/Commentaire" class="material-icons alignement">replay</i></a> 
                                     </div>
                                         <div class="collapsible-body" colspan="4">
                                     <div>  {{ commentaire.contenu_commentaire }} </div>
@@ -82,7 +82,7 @@
                                 </div>
                             </li>
                         {% endfor %}
-                    </ul>
+                </ul>
                 </div>
        </article>
     {% else %}

@@ -27,7 +27,7 @@ class ControleurEpisode
 
 				if($episode->etat() != 'publié')
 				{
-					header('Location: http://alaska.thomassebert.fr/');
+					return $app->redirect('http://alaska.thomassebert.fr/');
 			  		
 				}
 
@@ -56,7 +56,7 @@ class ControleurEpisode
 			            $app['dao.commentaire']->creerCommentaire($commentaire, $id);
 			            $alerte = "Votre commentaire à bien été publié";
 			            $request = null;
-			            header('Location: http://alaska.thomassebert.fr/episode/'.$id);
+			            return $app->redirect('http://alaska.thomassebert.fr/episode'.$id);
 			  			
 			    	}
 

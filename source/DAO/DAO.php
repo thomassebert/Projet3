@@ -143,6 +143,8 @@ abstract class DAO
 
     public function restaurerObjet($idObjet, $typeObjet)
     {
+        $idObjet = (int) $idObjet;
+
         switch ($typeObjet)
         {
             case 'Episode' :
@@ -150,12 +152,15 @@ abstract class DAO
                 $restaurerEpisode = $this->_bdd->prepare("UPDATE episodes_publies SET corbeille = 'non' WHERE ID = :id");
                 $restaurerEpisode->execute(array('id' => $idObjet));
 
+                $restaurerCommentaire = $this->_bdd->prepare("UPDATE commentaires SET corbeille = 'non' WHERE ID_episode = :id");
+                $restaurerCommentaire->execute(array('id' => $idObjet));
+
    
                 break;
 
             case 'Commentaire' :
 
-                $restaurerCommentaire = $this->_bdd->exec("UPDATE commentaires SET corbeille = 'non' WHERE ID = :id");
+                $restaurerCommentaire = $this->_bdd->prepare("UPDATE commentaires SET corbeille = 'non' WHERE ID = :id");
                 $restaurerCommentaire->execute(array('id' => $idObjet));
                 
                 break;

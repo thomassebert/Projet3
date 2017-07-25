@@ -40,11 +40,11 @@ class ControleurCorbeille
 	    		break;
 
 	    	case 'Commentaire' :
-	    		$restauration = $app['dao.user']->restaurerObjet($id, $typeElement);
+	    		$restauration = $app['dao.commentaire']->restaurerObjet($id, $typeElement);
 	    		break;
 		}
 		
-		header('Location: http://alaska.thomassebert.fr/administration');
+		return $app->redirect('http://alaska.thomassebert.fr/administration');
 	  	
 	}
 

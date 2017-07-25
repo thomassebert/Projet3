@@ -23,7 +23,7 @@ class ControleurNouveauMdp
                 $encoder = $app['security.encoder.bcrypt'];
                 $password = $encoder->encodePassword($mdp1, $salt);
 				$app['dao.user']->modifierMotDePasse($password, $salt, $id);
-				header('Location: http://alaska.thomassebert.fr/logout');
+				return $app->redirect('http://alaska.thomassebert.fr/logout');
 	  			
 			}
 			else

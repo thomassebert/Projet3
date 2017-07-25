@@ -73,7 +73,7 @@ class ControleurAccueilAdministration
 	    		break;
 		}
 		
-		header('Location: http://alaska.thomassebert.fr/administration');
+		return $app->redirect('http://alaska.thomassebert.fr/administration');
 	  	
 	}
 

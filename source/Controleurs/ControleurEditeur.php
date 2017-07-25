@@ -63,7 +63,7 @@ class ControleurEditeur
 				$app['dao.episode']->creerEpisode($episode);
 			}
 
-			header('Location: http://alaska.thomassebert.fr/administration');
+			return $app->redirect('http://alaska.thomassebert.fr/administration');
 			
 		}
 
