@@ -36,11 +36,11 @@ class ControleurCorbeille
 		switch ($typeElement) 
 		{
 	    	case 'Episode' :
-	    		$restauration = $app['dao.episode']->restaurerObjet($id, $typeElement);
+	    		$app['dao.episode']->restaurerObjet($id, $typeElement);
 	    		break;
 
 	    	case 'Commentaire' :
-	    		$restauration = $app['dao.commentaire']->restaurerObjet($id, $typeElement);
+	    		$app['dao.commentaire']->restaurerObjet($id, $typeElement);
 	    		break;
 		}
 		

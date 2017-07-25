@@ -57,19 +57,19 @@ class ControleurAccueilAdministration
 		switch ($typeElement) 
 		{
 			case 'Signalement' :
-				$suppression = $app['dao.commentaire']->suppressionObjet($id, $typeElement);
+				$app['dao.commentaire']->suppressionObjet($id, $typeElement);
 	    		break;
 
 			case 'SignalementSeul' :
-	    		$suppression = $app['dao.commentaire']->suppressionObjet($id, $typeElement);
+	    		$app['dao.commentaire']->suppressionObjet($id, $typeElement);
 	    		break;
 
 	    	case 'Episode' :
-	    		$suppression = $app['dao.episode']->suppressionObjet($id, $typeElement);
+	    		$app['dao.episode']->suppressionObjet($id, $typeElement);
 	    		break;
 
 	    	case 'Utilisateur' :
-	    		$suppression = $app['dao.user']->suppressionObjet($id, $typeElement);
+	    		$app['dao.user']->suppressionObjet($id, $typeElement);
 	    		break;
 		}
 		

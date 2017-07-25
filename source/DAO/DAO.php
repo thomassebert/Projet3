@@ -37,7 +37,7 @@ abstract class DAO
     // parametre 2 = (string) Type d'objet 
     // retour = (array) Tableau d'objets 
 
-    public function obtenirObjet(String $requeteSql, $typeObjet, $id = null) 
+    public function obtenirObjet( $requeteSql, $typeObjet, $id = null) 
     {
         if (is_null($id)) 
         {

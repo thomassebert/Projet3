@@ -37,7 +37,7 @@ class ControleurEpisode
 				if(!isset($_COOKIE[$nomCookie]))
 				{
 					setcookie($nomCookie, '1', time()+(7*24*3600), null, null, false, true);
-					$compteur = $app['dao.episode']->compteurVues($id);
+					$app['dao.episode']->compteurVues($id);
 				}
 
 				
