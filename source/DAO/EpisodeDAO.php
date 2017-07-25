@@ -30,8 +30,8 @@ class EpisodeDAO extends DAO
 
     public function obtenirUnEpisodeParId($idEpisode)
     {
-        $requeteSql = 'SELECT * FROM episodes_publies WHERE ID ='.$idEpisode.' AND corbeille = "non"';
-        $episodes = $this->obtenirObjet($requeteSql, 'EpisodeElement');
+        $requeteSql = $this->_bdd->prepare('SELECT * FROM episodes_publies WHERE ID = ? AND corbeille = "non"');
+        $episodes = $this->obtenirObjet($requeteSql, 'EpisodeElement', $idEpisode);
         $episode = $episodes[$idEpisode];
         return $episode;
     } 

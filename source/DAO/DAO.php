@@ -37,9 +37,18 @@ abstract class DAO
     // parametre 2 = (string) Type d'objet 
     // retour = (array) Tableau d'objets 
 
-    public function obtenirObjet($requeteSql, $typeObjet) 
+    public function obtenirObjet($requeteSql, $typeObjet, $id = null) 
     {
-        $resultatsRequete = $this->_bdd->fetchAll($requeteSql);
+        if (is_null($id)) 
+        {
+            $resultatsRequete = $this->_bdd->fetchAll($requeteSql);
+        }
+        else
+        {
+            $requeteSql->execute(array($id));
+            $resultatsRequete = $requeteSql;
+        }
+        
 
         $tableauObjets = array();
 
