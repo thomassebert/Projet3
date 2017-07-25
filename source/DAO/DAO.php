@@ -5,6 +5,7 @@ use Doctrine\DBAL\Connection;
 use projet3\Domaine\CommentaireElement;
 use projet3\Domaine\EpisodeElement;
 use projet3\Domaine\UtilisateurElement;
+use Doctrine\DBAL\Statement;
 
 abstract class DAO
 {
@@ -37,18 +38,17 @@ abstract class DAO
     // parametre 2 = (string) Type d'objet 
     // retour = (array) Tableau d'objets 
 
-    public function obtenirObjet( $requeteSql, $typeObjet, $id = null) 
+    public function obtenirObjet(Statement $requeteSql, $typeObjet, $id = null) 
     {
         if (is_null($id)) 
         {
-            $resultatsRequete = $this->_bdd->fetchAll($requeteSql);
+            $requeteSql->execute();
         }
         else
         {
-            $requeteSql->execute(array($id));
-            $resultatsRequete = $requeteSql;
+            $requeteSql->execute(array($id)); 
         }
-        
+        $resultatsRequete = $requeteSql;
 
         $tableauObjets = array();
 

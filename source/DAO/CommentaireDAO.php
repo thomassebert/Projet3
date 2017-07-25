@@ -12,21 +12,21 @@ class CommentaireDAO extends DAO
 
 	public function obtenirCommentaires() 
 	{
-		$requeteSql = 'SELECT * FROM commentaires WHERE signalement = "non" AND corbeille = "non" ORDER BY date_publication_commentaire';
+		$requeteSql = $this->_bdd->prepare('SELECT * FROM commentaires WHERE signalement = "non" AND corbeille = "non" ORDER BY date_publication_commentaire');
 		$commentaires = $this->obtenirObjet($requeteSql, 'CommentaireElement');
 		return $commentaires;
 	}
 
 	public function commentairesSupprimes() 
 	{
-		$requeteSql = 'SELECT * FROM commentaires WHERE signalement = "non" AND corbeille = "oui" ORDER BY date_publication_commentaire';
+		$requeteSql = $this->_bdd->prepare('SELECT * FROM commentaires WHERE signalement = "non" AND corbeille = "oui" ORDER BY date_publication_commentaire');
 		$commentaires = $this->obtenirObjet($requeteSql, 'CommentaireElement');
 		return $commentaires;
 	}
 
 	public function signalementsSupprimes() 
 	{
-		$requeteSql = 'SELECT * FROM commentaires WHERE signalement = "oui" AND corbeille = "oui" ORDER BY date_publication_commentaire';
+		$requeteSql = $this->_bdd->prepare('SELECT * FROM commentaires WHERE signalement = "oui" AND corbeille = "oui" ORDER BY date_publication_commentaire');
 		$commentaires = $this->obtenirObjet($requeteSql, 'CommentaireElement');
 		return $commentaires;
 	}
@@ -63,7 +63,7 @@ class CommentaireDAO extends DAO
 
 	public function obtenirSignalements() 
 	{
-		$requeteSql = 'SELECT * FROM commentaires WHERE signalement = "oui" AND corbeille = "non" ORDER BY date_publication_commentaire';
+		$requeteSql = $this->_bdd->prepare('SELECT * FROM commentaires WHERE signalement = "oui" AND corbeille = "non" ORDER BY date_publication_commentaire');
 		$signalements = $this->obtenirObjet($requeteSql, 'CommentaireElement');
 
 		$reponse = array();
