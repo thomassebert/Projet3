@@ -38,7 +38,7 @@ class ControleurEditeur
 		// Mise à jour ou création de l'épisode en BDD
 		// exit = (url) Redirection vers la page d'acceuil administration
 
-		if ($formulaire->isSubmitted() && $formulaire->isValid() && $episode->titre() != null && $episode->contenu() != null && $episode->auteur() != null && $episode->etat() != null && ($episode->image() != null || $id != 0) )
+		if ($formulaire->isSubmitted() && $formulaire->isValid() && $episode->titre() !== null && $episode->contenu() !== null && $episode->auteur() !== null && $episode->etat() !== null && ($episode->image() !== null || $id !== 0) )
 		{
 			// Récupération du fichier
 		    $donnees = $request->files->get($formulaire->getName());
