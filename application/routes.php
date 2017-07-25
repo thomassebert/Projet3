@@ -54,14 +54,6 @@ $app->match('/administration/motdepasse/{id}/{post}', "projet3\Controleurs\Contr
 $app->match('/administration/restaurer/{id}/{typeElement}', "projet3\Controleurs\ControleurCorbeille::restaurer" );
 
 // PAGE D'ERREUR
+// // return = (vue) erreur.html.twig
 
-$app->error(function (\Exception $e, Request $request, $code) {
-    switch ($code) {
-        case 404:
-            $message = "Cette page n'existe pas!";
-            break;
-        default:
-            $message = "Désolé, il semblerait que quelque chose se soit très mal passé... ";
-    }
-    return new Response($message);
-});
+$app->error("projet3\Controleurs\ControleurErreur::obtenirVue"); 
