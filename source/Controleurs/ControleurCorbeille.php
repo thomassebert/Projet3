@@ -45,7 +45,7 @@ class ControleurCorbeille
 		}
 		
 		header('Location: http://alaska.thomassebert.fr/administration');
-	  	exit();
+	  	
 	}
 
 }

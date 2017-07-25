@@ -24,7 +24,7 @@ class ControleurNouveauMdp
                 $password = $encoder->encodePassword($mdp1, $salt);
 				$app['dao.user']->modifierMotDePasse($password, $salt, $id);
 				header('Location: http://alaska.thomassebert.fr/logout');
-	  			exit();
+	  			
 			}
 			else
 			{

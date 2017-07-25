@@ -24,7 +24,7 @@ class ControleurEpisode
 		if($episode->etat() != 'publié')
 		{
 			header('Location: http://alaska.thomassebert.fr/');
-	  		exit();
+	  		
 		}
 
 	// On incrémente le nombre de vues de l'épisode
@@ -53,7 +53,7 @@ class ControleurEpisode
 	            $alerte = "Votre commentaire à bien été publié";
 	            $request = null;
 	            header('Location: http://alaska.thomassebert.fr/episode/'.$id);
-	  			exit();
+	  			
 	    	}
 
     	$vueFormulaire = $formulaire->createView();
