@@ -1,4 +1,7 @@
 {
+    "name" : "composer.json",
+    "description" : "liste des dépendences",
+    
     "require": {
         "silex/silex": "~2.0",
         "doctrine/dbal": "~2.5",
