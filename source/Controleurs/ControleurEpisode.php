@@ -56,7 +56,7 @@ class ControleurEpisode
 			            $app['dao.commentaire']->creerCommentaire($commentaire, $id);
 			            $alerte = "Votre commentaire à bien été publié";
 			            $request = null;
-			            return $app->redirect('http://alaska.thomassebert.fr/episode'.$id);
+			            return $app->redirect('http://alaska.thomassebert.fr/episode/'.$id);
 			  			
 			    	}
 

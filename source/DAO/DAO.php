@@ -48,6 +48,7 @@ abstract class DAO
         {
             $requeteSql->execute(array($id)); 
         }
+        
         $resultatsRequete = $requeteSql;
 
         $tableauObjets = array();
