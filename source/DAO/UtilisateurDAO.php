@@ -31,7 +31,7 @@ class UtilisateurDAO extends DAO implements UserProviderInterface
                 'nouveauMotDePasse' => $nouveauMotDePasse,
                 'nouveauSel' => $nouveauSel,
                 'id' => $id
-                ))
+                ));
     }
 
     /**

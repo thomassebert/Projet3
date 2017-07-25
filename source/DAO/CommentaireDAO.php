@@ -52,7 +52,7 @@ class CommentaireDAO extends DAO
 	public function obtenirCommentaireParId($idCommentaire) 
 	{
 		$idCommentaire = (int) $idCommentaire;
-		$requeteSql = $this->_bdd->prepare('SELECT * FROM commentaires WHERE ID = '.$idCommentaire.' AND corbeille = "non"');
+		$requeteSql = $this->_bdd->prepare('SELECT * FROM commentaires WHERE ID = ? AND corbeille = "non"');
 		$commentaire = $this->obtenirObjet($requeteSql, 'CommentaireElement', $idcommentaire);
 		return $commentaire;
 	}
