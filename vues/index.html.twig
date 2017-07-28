@@ -63,7 +63,11 @@
                                 <div class="row ">
                                     <h3 class="activator col s10 offset-s1 center-align titreEpisode"> {{ episode.titre |title }}  </h3> <i class="col s1 material-icons marge-haut">menu</i>
                                 </div>
+                                {% if episode.nombre_vues <= 1 %}
+                                <p class="activator petit">{{ episode.nombre_vues }} vue, publié le {{ episode.date_publication }} par {{ episode.auteur }} </p>
+                                {% else %}
                                 <p class="activator petit">{{ episode.nombre_vues }} vues, publié le {{ episode.date_publication }} par {{ episode.auteur }} </p>
+                                {% endif %}
                             </div>
                             <p><a class="waves-effect waves-teal btn-flat" href="http://alaska.thomassebert.fr/episode/{{ episode.id }}">Voir l'épisode</a></p>
                         </div>
